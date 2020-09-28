@@ -5,7 +5,7 @@ import SocialLoginScreen from "./lib/SocialLoginScreen";
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen />
     </>
   );
