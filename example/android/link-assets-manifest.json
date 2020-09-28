@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Athelas-Bold.ttf",
+      "sha1": "a2f22a316c574382e8ba14952f02d70033d04ad5"
+    },
+    {
+      "path": "assets/fonts/Athelas-BoldItalic.ttf",
+      "sha1": "cd0a22437dcc7ea9aa3d63872b481c2afa2b1990"
+    },
+    {
+      "path": "assets/fonts/Athelas-Italic.ttf",
+      "sha1": "7817157b299031ebadfeaca4bfba2e7cb5b2f278"
+    },
+    {
+      "path": "assets/fonts/Athelas-Regular.ttf",
+      "sha1": "9d7ec170b22391ec352b4aee768763268bf08d22"
+    },
+    {
+      "path": "assets/fonts/Sansita-Black.ttf",
+      "sha1": "ada506bc8a0e956f07fb0839f56f21573ca930a8"
+    },
+    {
+      "path": "assets/fonts/Sansita-BlackItalic.ttf",
+      "sha1": "0b4da5fbb2f7d38eeb5d1e4aa1235f6b1cde8798"
+    },
+    {
+      "path": "assets/fonts/Sansita-Bold.ttf",
+      "sha1": "961622c7032709df872931093f0c755e8bcc7c64"
+    },
+    {
+      "path": "assets/fonts/Sansita-BoldItalic.ttf",
+      "sha1": "276c85162319728d12e45a386b235804208a8c9f"
+    },
+    {
+      "path": "assets/fonts/Sansita-ExtraBold.ttf",
+      "sha1": "27d35a8b8b0d8fec6192d462270278fcaefbdf32"
+    },
+    {
+      "path": "assets/fonts/Sansita-ExtraBoldItalic.ttf",
+      "sha1": "1626d5710287e8d25210a6612ec95215070f3eaa"
+    },
+    {
+      "path": "assets/fonts/Sansita-Italic.ttf",
+      "sha1": "a875c7328dd69e649653cdcfe9090df47a61e5c4"
+    },
+    {
+      "path": "assets/fonts/Sansita-Regular.ttf",
+      "sha1": "4d67ef25d645c432da6f3bde6d61cb33dab02905"
+    }
+  ]
+}

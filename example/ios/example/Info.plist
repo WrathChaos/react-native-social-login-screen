@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -53,5 +53,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Athelas-Bold.ttf</string>
+		<string>Athelas-BoldItalic.ttf</string>
+		<string>Athelas-Italic.ttf</string>
+		<string>Athelas-Regular.ttf</string>
+		<string>Sansita-Black.ttf</string>
+		<string>Sansita-BlackItalic.ttf</string>
+		<string>Sansita-Bold.ttf</string>
+		<string>Sansita-BoldItalic.ttf</string>
+		<string>Sansita-ExtraBold.ttf</string>
+		<string>Sansita-ExtraBoldItalic.ttf</string>
+		<string>Sansita-Italic.ttf</string>
+		<string>Sansita-Regular.ttf</string>
+	</array>
 </dict>
 </plist>
