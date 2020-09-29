@@ -21,8 +21,10 @@ const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 interface IProps {
   signUpText?: string;
   loginTitleText?: string;
+  forgotPasswordText?: string;
   loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
+  forgotPasswordTextStyle?: TextStyle;
   backArrowImageSource: any;
   onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
@@ -87,23 +89,18 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderForgotPassword = () => {
-    const { onForgotPasswordPress } = this.props;
+    const {
+      forgotPasswordText = "Forgot Password?",
+      forgotPasswordTextStyle,
+      onForgotPasswordPress,
+    } = this.props;
     return (
       <TouchableOpacity
-        style={{
-          marginTop: 24,
-          marginLeft: 32,
-        }}
+        style={styles.forgotPasswordContainer}
         onPress={onForgotPasswordPress}
       >
-        <Text
-          style={{
-            fontSize: 14,
-            color: "#b1b2ba",
-            fontFamily: "Sansita-Bold",
-          }}
-        >
-          Forgot Password?
+        <Text style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
+          {forgotPasswordText}
         </Text>
       </TouchableOpacity>
     );

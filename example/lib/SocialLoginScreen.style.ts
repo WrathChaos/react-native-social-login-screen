@@ -10,6 +10,8 @@ interface Style {
   loginTextStyle: TextStyle;
   textFieldContainer: ViewStyle;
   passwordTextFieldContainer: ViewStyle;
+  forgotPasswordContainer: ViewStyle;
+  forgotPasswordTextStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -44,5 +46,13 @@ export default StyleSheet.create<Style>({
   },
   passwordTextFieldContainer: {
     marginTop: 24,
+  },
+  forgotPasswordContainer: {
+    marginTop: 24,
+    marginLeft: 32,
+  },
+  forgotPasswordTextStyle: {
+    fontSize: 14,
+    color: "#b1b2ba",
   },
 });
