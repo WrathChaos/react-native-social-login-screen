@@ -72,13 +72,9 @@ export default class SocialLoginScreen extends React.PureComponent<
 
   renderTextFieldContainer = () => {
     return (
-      <View style={{ marginTop: 48 }}>
+      <View style={styles.textFieldContainer}>
         <TextField placeholder="toy_brise@jaunita.us" />
-        <View
-          style={{
-            marginTop: 24,
-          }}
-        >
+        <View style={styles.passwordTextFieldContainer}>
           <TextField
             width="70%"
             secureTextEntry

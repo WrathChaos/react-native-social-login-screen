@@ -8,6 +8,8 @@ interface Style {
   signUpTextStyle: TextStyle;
   loginTitleContainer: ViewStyle;
   loginTextStyle: TextStyle;
+  textFieldContainer: ViewStyle;
+  passwordTextFieldContainer: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -36,5 +38,11 @@ export default StyleSheet.create<Style>({
   loginTextStyle: {
     fontSize: 40,
     fontWeight: "bold",
+  },
+  textFieldContainer: {
+    marginTop: 48,
+  },
+  passwordTextFieldContainer: {
+    marginTop: 24,
   },
 });
