@@ -6,7 +6,7 @@ import {
   Dimensions,
   ScrollView,
   SafeAreaView,
-  TouchableOpacity,
+  TouchableOpacity,, TextStyle
 } from "react-native";
 /**
  * ? Local Imports
@@ -18,6 +18,9 @@ import SocialButton from "./components/SocialButton/SocialButton";
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
 interface IProps {
+  signUpText?: string;
+  signUpTextStyle?: TextStyle;
+  backArrowImageSource: any;
   onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
 }
@@ -29,30 +32,18 @@ export default class SocialLoginScreen extends React.PureComponent<
   IState
 > {
   renderHeader = () => {
-    const { onSignUpPress } = this.props;
+    const { signUpText= "SIGN UP", signUpTextStyle, backArrowImageSource, onSignUpPress } = this.props;
     return (
-      <View style={{ marginLeft: 32, marginTop: 16 }}>
+      <View style={styles.headerContainer}>
         <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-          }}
+          style={styles.headerContainerGlue}
           onPress={onSignUpPress}
         >
           <Image
-            source={require("../assets/left-arrow.png")}
-            style={{ height: 12, width: 12, top: 1.5 }}
+            source={backArrowImageSource}
+            style={styles.headerBackImageStyle}
           />
-          <Text
-            style={{
-              fontSize: 16,
-              marginLeft: 8,
-              color: "#777684",
-              fontFamily: "Sansita-Regular",
-            }}
-          >
-            SIGN UP
-          </Text>
+          <Text style={[styles.signUpTextStyle, signUpTextStyle]}>{signUpText}</Text>
         </TouchableOpacity>
       </View>
     );

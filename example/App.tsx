@@ -6,7 +6,12 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
-      <SocialLoginScreen />
+      <SocialLoginScreen
+        backArrowImageSource={require("./assets/left-arrow.png")}
+        signUpTextStyle={{
+          fontFamily: "Sansita-Regular",
+        }}
+      />
     </>
   );
 };
