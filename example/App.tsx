@@ -11,6 +11,9 @@ const App = () => {
         signUpTextStyle={{
           fontFamily: "Sansita-Regular",
         }}
+        loginTextStyle={{
+          fontFamily: "Athelas-Bold",
+        }}
       />
     </>
   );

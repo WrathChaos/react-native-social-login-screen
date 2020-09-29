@@ -6,6 +6,8 @@ interface Style {
   headerContainerGlue: ViewStyle;
   headerBackImageStyle: ImageStyle;
   signUpTextStyle: TextStyle;
+  loginTitleContainer: ViewStyle;
+  loginTextStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -27,5 +29,12 @@ export default StyleSheet.create<Style>({
     fontSize: 16,
     marginLeft: 8,
     color: "#777684",
+  },
+  loginTitleContainer: {
+    marginLeft: 32,
+  },
+  loginTextStyle: {
+    fontSize: 40,
+    fontWeight: "bold",
   },
 });

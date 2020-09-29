@@ -3,10 +3,11 @@ import {
   Text,
   View,
   Image,
+  TextStyle,
   Dimensions,
   ScrollView,
   SafeAreaView,
-  TouchableOpacity,, TextStyle
+  TouchableOpacity,
 } from "react-native";
 /**
  * ? Local Imports
@@ -19,6 +20,8 @@ const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
 interface IProps {
   signUpText?: string;
+  loginTitleText?: string;
+  loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
   backArrowImageSource: any;
   onSignUpPress: () => void;
@@ -32,7 +35,12 @@ export default class SocialLoginScreen extends React.PureComponent<
   IState
 > {
   renderHeader = () => {
-    const { signUpText= "SIGN UP", signUpTextStyle, backArrowImageSource, onSignUpPress } = this.props;
+    const {
+      signUpText = "SIGN UP",
+      signUpTextStyle,
+      backArrowImageSource,
+      onSignUpPress,
+    } = this.props;
     return (
       <View style={styles.headerContainer}>
         <TouchableOpacity
@@ -43,27 +51,20 @@ export default class SocialLoginScreen extends React.PureComponent<
             source={backArrowImageSource}
             style={styles.headerBackImageStyle}
           />
-          <Text style={[styles.signUpTextStyle, signUpTextStyle]}>{signUpText}</Text>
+          <Text style={[styles.signUpTextStyle, signUpTextStyle]}>
+            {signUpText}
+          </Text>
         </TouchableOpacity>
       </View>
     );
   };
 
   renderLoginTitle = () => {
+    const { loginTitleText = "Log In", loginTextStyle } = this.props;
     return (
-      <View
-        style={{
-          marginLeft: 32,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 40,
-            fontWeight: "bold",
-            fontFamily: "Athelas-Bold",
-          }}
-        >
-          Log In
+      <View style={styles.loginTitleContainer}>
+        <Text style={[styles.loginTextStyle, loginTextStyle]}>
+          {loginTitleText}
         </Text>
       </View>
     );
