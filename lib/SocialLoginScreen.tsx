@@ -37,6 +37,7 @@ interface IProps {
   signUpTextStyle?: TextStyle;
   forgotPasswordTextStyle?: TextStyle;
   backArrowImageSource?: any;
+  loginButtonTextStyle?: any;
   rightTopAssetImageSource?: any;
   leftBottomAssetImageSource?: any;
   onLoginPress: () => void;
