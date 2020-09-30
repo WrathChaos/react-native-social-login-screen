@@ -1,48 +1,24 @@
-<img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/>
+<img alt="React Native Social Login Screen" src="assets/logo.png" width="1050"/>
 
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-typescript-library-starter)
+[![Easy Login Screen with beautiful design and fully customizable options for React Native](https://img.shields.io/badge/-Easy%20Login%20Screen%20with%20beautiful%20design%20and%20fully%20customizable%20options%20for%20React%20Native-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-social-login-screen)
 
-[![React Native Typescript Library Starter](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-typescript-library-starter)
-
-[![npm version](https://img.shields.io/npm/v/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
-[![npm](https://img.shields.io/npm/dt/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
+[![npm version](https://img.shields.io/npm/v/react-native-social-login-screen.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-social-login-screen)
+[![npm](https://img.shields.io/npm/dt/react-native-social-login-screen.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-social-login-screen)
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 <p align="center">
-  <img alt="React Native Typescript Library Starter"
+  <img alt="React Native Social Login Screen"
         src="assets/Screenshots/typescript.jpg" />
 </p>
-
-## Library Usage
-
-- `npm i`
-- Delete example folder
-- Delete build folder
-- Make your own library into the `lib` folder
-- Change package.json
-- Change README for your own documentation
-- `npm run build`
-
-```
-> react-native-typescript-library-starter@0.1.0 build /Users/kuray/Coursion/MyLibraries/ReactNative/react-native-typescript-library-starter
-> cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!
-
-Build completed!
-```
-
-- Test your build/dist into the new project
-- Finally, time to npm publish :)
-
-### Below part is for Documentation ! Remove above Library Usage
 
 # Installation
 
 Add the dependency:
 
 ```bash
-npm i react-native-typescript-library-starter
+npm i react-native-social-login-screen
 ```
 
 ## Peer Dependencies
@@ -50,8 +26,7 @@ npm i react-native-typescript-library-starter
 <h5><i>IMPORTANT! You need install them</i></h5>
 
 ```js
-"react": ">= 16.x.x",
-"react-native": ">= 0.55.x",
+"react-native-androw": ">= 0.0.34"
 ```
 
 # Usage
@@ -59,32 +34,99 @@ npm i react-native-typescript-library-starter
 ## Import
 
 ```jsx
-import MyComponent from "react-native-typescript-library-starter";
+import SocialLoginScreen from "react-native-social-login-screen";
 ```
 
 ## Fundamental Usage
 
 ```jsx
-<MyComponent />
+<SocialLoginScreen
+  onSignUpPress={() => {}}
+  onLoginPress={() => {}}
+  onForgotPasswordPress={() => {}}
+  rightTopAssetImageSource={require("./assets/ramen.png")}
+  leftBottomAssetImageSource={require("./assets/chef.png")}
+/>
+```
+
+## Advanced Usage
+
+```jsx
+<SocialLoginScreen
+  enableFacebookLogin
+  onFacebookLoginPress={() => {}}
+  enableDiscordLogin
+  onDiscordLoginPress={() => {}}
+  enableTwitterLogin
+  onTwitterLoginPress={() => {}}
+  enableGoogleLogin
+  onGoogleLoginPress={() => {}}
+  signUpTextStyle={{
+    fontFamily: "Sansita-Regular",
+  }}
+  loginTextStyle={{
+    fontFamily: "Athelas-Bold",
+  }}
+  forgotPasswordTextStyle={{
+    fontFamily: "Sansita-Bold",
+  }}
+  onSignUpPress={() => {}}
+  onLoginPress={() => {}}
+  onForgotPasswordPress={() => {}}
+  rightTopAssetImageSource={require("./assets/ramen.png")}
+  leftBottomAssetImageSource={require("./assets/chef.png")}
+/>
 ```
 
 # Configuration - Props
 
-| Property |  Type   | Default | Description                                             |
-| -------- | :-----: | :-----: | ------------------------------------------------------- |
-| outline  | boolean |  true   | make the button outline                                 |
-| solid    | boolean |  false  | make the button with a solid background and a shadow    |
-| gradient | boolean |  false  | make the button with a gradient background and a shadow |
-| width    | number  |   150   | change the button's width                               |
+## Fundamentals
+
+| Property                   |     Type     |  Default  | Description                                                           |
+| -------------------------- | :----------: | :-------: | --------------------------------------------------------------------- |
+| onLoginPress               |   function   | undefined | fundamental onLoginPress functionality for your own logic             |
+| onSignUpPress              |   function   | undefined | handle sign-up button is pressed                                      |
+| onForgotPasswordPress      |   function   | undefined | handle forgot password button is pressed                              |
+| rightTopAssetImageSource   | image-source | undefined | set the right top aligned asset with your own image source            |
+| leftBottomAssetImageSource | image-source | undefined | set the left bottom aligned asset with your own image source          |
+| backArrowImageSource       | image-source |  default  | set the sign-up button's back button asset with your own image source |
+
+## Social Buttons
+
+| Property             |   Type   |      Default       | Description                              |
+| -------------------- | :------: | :----------------: | ---------------------------------------- |
+| loginText            |  string  |   "Let's cook!"    | change the login button's text           |
+| signUpText           |  string  |     "Sign Up"      | change the sign up button's text         |
+| loginTitleText       |  string  |      "Log In"      | change the login title's text            |
+| forgotPasswordText   |  string  | "Forgot Password?" | change the forgot password button's text |
+| enableFacebookLogin  | boolean  |       false        | enable the Facebook login button         |
+| enableTwitterLogin   | boolean  |       false        | enable the Twitter login button          |
+| enableGoogleLogin    | boolean  |       false        | enable the Google login button           |
+| enableDiscordLogin   | boolean  |       false        | enable the Discord login button          |
+| onFacebookLoginPress | function |     undefined      | handle Facebook login button is pressed  |
+| onTwitterLoginPress  | function |     undefined      | handle Twitter login button is pressed   |
+| onGoogleLoginPress   | function |     undefined      | handle Google login button is pressed    |
+| onDiscordLoginPress  | function |     undefined      | handle Discord login button is pressed   |
+
+## Customization
+
+| Property                   | Type  | Default | Description                                                     |
+| -------------------------- | :---: | :-----: | --------------------------------------------------------------- |
+| loginTextStyle             | style | default | change or override the default styling for login text           |
+| signUpTextStyle            | style | default | change or override the default styling for sign-up text         |
+| forgotPasswordTextStyle    | style | default | change or override the default styling for forgot password text |
+| loginButtonShadowColor     | style | default | change the default shadow color for login button                |
+| loginButtonBackgroundColor | style | #69bc4c | change the default background color for login button            |
+
+<i>**More customization is in coming...**</i>
 
 ## Future Plans
 
 - [x] ~~LICENSE~~
+- [ ] More Customization Options
+- [ ] Add custom `SocialButton` instead of default ones
+- [ ] Built-in Sign-Up Screen and its navigation with animation
 - [ ] Write an article about the lib on Medium
-
-# Change Log
-
-Change log will be here !
 
 ## Author
 
@@ -92,4 +134,8 @@ FreakyCoder, kurayogun@gmail.com
 
 ## License
 
-React Native Typescript Library Starter is available under the MIT license. See the LICENSE file for more info.
+React Native Social Login Screen is available under the MIT license. See the LICENSE file for more info.
+
+```
+
+```
