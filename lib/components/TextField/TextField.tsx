@@ -7,11 +7,14 @@ import { _textInputStyle } from "./TextField.style";
 
 interface ITextFieldProps extends TextInputProps {
   width?: number | string;
+  textFieldStyle?: any;
 }
 
 const TextField = (props: ITextFieldProps) => {
-  const { width = "85%" } = props;
-  return <TextInput style={_textInputStyle(width)} {...props} />;
+  const { width = "85%", textFieldStyle } = props;
+  return (
+    <TextInput style={[_textInputStyle(width), textFieldStyle]} {...props} />
+  );
 };
 
 export default TextField;

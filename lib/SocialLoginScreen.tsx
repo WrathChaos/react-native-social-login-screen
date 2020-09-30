@@ -29,6 +29,8 @@ interface IProps {
   forgotPasswordText?: string;
   loginButtonShadowColor?: string;
   loginButtonBackgroundColor?: string;
+  usernamePlaceholder?: string;
+  passwordPlaceholder?: string;
   enableFacebookLogin?: boolean;
   enableTwitterLogin?: boolean;
   enableGoogleLogin?: boolean;
@@ -38,6 +40,8 @@ interface IProps {
   forgotPasswordTextStyle?: TextStyle;
   backArrowImageSource?: any;
   loginButtonTextStyle?: any;
+  usernameTextFieldStyle?: any;
+  passwordTextFieldStyle?: any;
   rightTopAssetImageSource?: any;
   leftBottomAssetImageSource?: any;
   onLoginPress: () => void;
@@ -47,6 +51,8 @@ interface IProps {
   onTwitterLoginPress?: () => void;
   onGoogleLoginPress?: () => void;
   onDiscordLoginPress?: () => void;
+  onUserNameChangeText: (text: string) => void;
+  onPasswordChangeText: (text: string) => void;
 }
 
 interface IState {}
@@ -92,14 +98,30 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderTextFieldContainer = () => {
+    const {
+      usernameTextFieldStyle,
+      usernamePlaceholder = "john_doe@example.com",
+      onUserNameChangeText,
+      passwordPlaceholder = "• • • • • • • •",
+      onPasswordChangeText,
+      passwordTextFieldStyle,
+    } = this.props;
     return (
       <View style={styles.textFieldContainer}>
-        <TextField placeholder="toy_brise@jaunita.us" />
+        <TextField
+          placeholder={usernamePlaceholder}
+          textFieldStyle={usernameTextFieldStyle}
+          onChangeText={onUserNameChangeText}
+          {...this.props}
+        />
         <View style={styles.passwordTextFieldContainer}>
           <TextField
             width="70%"
             secureTextEntry
-            placeholder="• • • • • • • •"
+            placeholder={passwordPlaceholder}
+            textFieldStyle={passwordTextFieldStyle}
+            onChangeText={onPasswordChangeText}
+            {...this.props}
           />
         </View>
         {this.renderForgotPassword()}

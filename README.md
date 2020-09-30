@@ -44,6 +44,8 @@ import SocialLoginScreen from "react-native-social-login-screen";
   onSignUpPress={() => {}}
   onLoginPress={() => {}}
   onForgotPasswordPress={() => {}}
+  onUserNameChangeText={(username) => console.log("Username: ", username)}
+  onPasswordChangeText={(password) => console.log("Password: ", password)}
   rightTopAssetImageSource={require("./assets/ramen.png")}
   leftBottomAssetImageSource={require("./assets/chef.png")}
 />
@@ -53,6 +55,11 @@ import SocialLoginScreen from "react-native-social-login-screen";
 
 ```jsx
 <SocialLoginScreen
+  onUserNameChangeText={(username) => console.log("Username: ", username)}
+  onPasswordChangeText={(password) => console.log("Password: ", password)}
+  onSignUpPress={() => {}}
+  onLoginPress={() => {}}
+  onForgotPasswordPress={() => {}}
   enableFacebookLogin
   onFacebookLoginPress={() => {}}
   enableDiscordLogin
@@ -61,6 +68,8 @@ import SocialLoginScreen from "react-native-social-login-screen";
   onTwitterLoginPress={() => {}}
   enableGoogleLogin
   onGoogleLoginPress={() => {}}
+  rightTopAssetImageSource={require("./assets/ramen.png")}
+  leftBottomAssetImageSource={require("./assets/chef.png")}
   signUpTextStyle={{
     fontFamily: "Sansita-Regular",
   }}
@@ -70,11 +79,6 @@ import SocialLoginScreen from "react-native-social-login-screen";
   forgotPasswordTextStyle={{
     fontFamily: "Sansita-Bold",
   }}
-  onSignUpPress={() => {}}
-  onLoginPress={() => {}}
-  onForgotPasswordPress={() => {}}
-  rightTopAssetImageSource={require("./assets/ramen.png")}
-  leftBottomAssetImageSource={require("./assets/chef.png")}
 />
 ```
 
@@ -82,14 +86,18 @@ import SocialLoginScreen from "react-native-social-login-screen";
 
 ## Fundamentals
 
-| Property                   |     Type     |  Default  | Description                                                           |
-| -------------------------- | :----------: | :-------: | --------------------------------------------------------------------- |
-| onLoginPress               |   function   | undefined | fundamental onLoginPress functionality for your own logic             |
-| onSignUpPress              |   function   | undefined | handle sign-up button is pressed                                      |
-| onForgotPasswordPress      |   function   | undefined | handle forgot password button is pressed                              |
-| rightTopAssetImageSource   | image-source | undefined | set the right top aligned asset with your own image source            |
-| leftBottomAssetImageSource | image-source | undefined | set the left bottom aligned asset with your own image source          |
-| backArrowImageSource       | image-source |  default  | set the sign-up button's back button asset with your own image source |
+| Property                   |     Type     |        Default         | Description                                                           |
+| -------------------------- | :----------: | :--------------------: | --------------------------------------------------------------------- |
+| onLoginPress               |   function   |       undefined        | fundamental onLoginPress functionality for your own logic             |
+| onSignUpPress              |   function   |       undefined        | handle sign-up button is pressed                                      |
+| onForgotPasswordPress      |   function   |       undefined        | handle forgot password button is pressed                              |
+| rightTopAssetImageSource   | image-source |       undefined        | set the right top aligned asset with your own image source            |
+| leftBottomAssetImageSource | image-source |       undefined        | set the left bottom aligned asset with your own image source          |
+| backArrowImageSource       | image-source |        default         | set the sign-up button's back button asset with your own image source |
+| usernamePlaceholder        |    string    | "john_doe@example.com" | change the username TextField's placeholder                           |
+| passwordPlaceholder        |    string    |   "• • • • • • • •"    | change the password TextField's placeholder                           |
+| onUserNameChangeText       |   function   |       undefined        | handle username TextField's onChangeText                              |
+| onPasswordChangeText       |   function   |       undefined        | handle password TextField's onChangeText                              |
 
 ## Social Buttons
 
@@ -117,6 +125,8 @@ import SocialLoginScreen from "react-native-social-login-screen";
 | forgotPasswordTextStyle    | style | default | change or override the default styling for forgot password text |
 | loginButtonShadowColor     | style | default | change the default shadow color for login button                |
 | loginButtonBackgroundColor | style | #69bc4c | change the default background color for login button            |
+| usernameTextFieldStyle     | style | default | change or override the default styling for username TextField   |
+| passwordTextFieldStyle     | style | default | change or override the default styling for password TextField   |
 
 <i>**More customization is in coming...**</i>
 

@@ -7,6 +7,13 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen
+        onUserNameChangeText={(username) => console.log("Username: ", username)}
+        onPasswordChangeText={(password) => console.log("Password: ", password)}
+        onSignUpPress={() => {}}
+        onLoginPress={() => {}}
+        onForgotPasswordPress={() => {}}
+        rightTopAssetImageSource={require("./assets/ramen.png")}
+        leftBottomAssetImageSource={require("./assets/chef.png")}
         enableFacebookLogin
         onFacebookLoginPress={() => {}}
         enableDiscordLogin
@@ -27,11 +34,6 @@ const App = () => {
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
         }}
-        onSignUpPress={() => {}}
-        onLoginPress={() => {}}
-        onForgotPasswordPress={() => {}}
-        rightTopAssetImageSource={require("./assets/ramen.png")}
-        leftBottomAssetImageSource={require("./assets/chef.png")}
       />
     </>
   );

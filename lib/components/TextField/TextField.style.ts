@@ -12,7 +12,6 @@ export const _textInputStyle = (width: number | string): TextStyle => ({
   paddingBottom: 12,
   borderBottomWidth: 1,
   borderColor: "#e1e1f2",
-  fontFamily: "Sansita-Regular",
 });
 
 export default StyleSheet.create<Style>({
