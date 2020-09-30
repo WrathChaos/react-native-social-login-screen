@@ -10,8 +10,21 @@
 
 <p align="center">
   <img alt="React Native Social Login Screen"
-        src="assets/Screenshots/typescript.jpg" />
+        src="assets/Screenshots/RN-Social-Login-Screen-iPhone8.gif" />
 </p>
+
+<table>
+  <tr>
+    <td align="center">
+      <img alt="React Native Social Login Screen"
+          src="assets/Screenshots/RN-Social-Login-Screen-iPhone8.png" />
+    </td>
+    <td align="center">
+      <img alt="React Native Social Login Screen"
+              src="assets/Screenshots/RN-Social-Login-Screen-iPhone11.png" />
+    </td>
+   </tr>
+</table>
 
 # Installation
 

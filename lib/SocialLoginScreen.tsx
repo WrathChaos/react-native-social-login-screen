@@ -255,7 +255,10 @@ export default class SocialLoginScreen extends React.PureComponent<
     return (
       <View style={styles.socialButtonsContainer}>
         {this.renderClassicLoginButton()}
-        <ScrollView contentInset={styles.socialLoginButtonsContentInset}>
+        <ScrollView
+          style={styles.socialButtonsContainerGlue}
+          contentInset={styles.socialLoginButtonsContentInset}
+        >
           {enableFacebookLogin && this.renderFacebookLoginButton()}
           {enableTwitterLogin && this.renderTwitterLoginButton()}
           {enableGoogleLogin && this.renderGoogleLoginButton()}

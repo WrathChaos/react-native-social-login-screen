@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "./build/dist/SocialLoginScreen";
+import SocialLoginScreen from "react-native-social-login-screen";
 
 const App = () => {
   return (
@@ -18,10 +18,10 @@ const App = () => {
         onFacebookLoginPress={() => {}}
         enableDiscordLogin
         onDiscordLoginPress={() => {}}
-        enableTwitterLogin
-        onTwitterLoginPress={() => {}}
-        enableGoogleLogin
-        onGoogleLoginPress={() => {}}
+        // enableTwitterLogin
+        // onTwitterLoginPress={() => {}}
+        // enableGoogleLogin
+        // onGoogleLoginPress={() => {}}
         loginButtonTextStyle={{
           fontFamily: "Sansita-Bold",
         }}

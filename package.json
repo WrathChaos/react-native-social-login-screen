@@ -1,6 +1,6 @@
 {
   "name": "react-native-social-login-screen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easy Login Screen with beautiful design and fully customizable options for React Native",
   "main": "./build/dist/SocialLoginScreen.js",
   "repository": "git@github.com:WrathChaos/react-native-social-login-screen.git",

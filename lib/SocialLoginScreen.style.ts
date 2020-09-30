@@ -24,6 +24,7 @@ interface Style {
   facebookImageStyle: ImageStyle;
   socialLoginButtonImageStyle: ImageStyle;
   socialButtonsContainer: ViewStyle;
+  socialButtonsContainerGlue: ViewStyle;
   socialLoginButtonsContentInset: NativeScrollRectangle;
   rightTopAssetContainer: ViewStyle;
   rightTopAssetImageStyle: ImageStyle;
@@ -89,6 +90,9 @@ export default StyleSheet.create<Style>({
   },
   socialButtonsContainer: {
     marginTop: 32,
+  },
+  socialButtonsContainerGlue: {
+    paddingBottom: 32,
   },
   socialLoginButtonsContentInset: {
     bottom: 100,
