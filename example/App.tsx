@@ -17,6 +17,11 @@ const App = () => {
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
         }}
+        onSignUpPress={() => {}}
+        onLoginPress={() => {}}
+        onForgotPasswordPress={() => {}}
+        rightTopAssetImageSource={require("./assets/ramen.png")}
+        leftBottomAssetImageSource={require("./assets/chef.png")}
       />
     </>
   );

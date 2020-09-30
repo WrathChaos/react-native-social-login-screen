@@ -17,16 +17,32 @@ import TextField from "./components/TextField/TextField";
 import SocialButton from "./components/SocialButton/SocialButton";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
+// ? Assets
+const backArrowImage = require("./local-assets/left-arrow.png");
+const facebookLogo = require("./local-assets/facebook-logo.png");
+const twitterLogo = require("./local-assets/twitter-logo.png");
+const googleLogo = require("./local-assets/google-logo.png");
+const discordLogo = require("./local-assets/discord-logo.png");
 
 interface IProps {
+  loginText?: string;
   signUpText?: string;
   loginTitleText?: string;
   forgotPasswordText?: string;
+  loginButtonShadowColor?: string;
+  loginButtonBackgroundColor?: string;
   loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
   forgotPasswordTextStyle?: TextStyle;
-  backArrowImageSource: any;
+  backArrowImageSource?: any;
+  rightTopAssetImageSource?: any;
+  leftBottomAssetImageSource?: any;
+  onLoginPress: () => void;
   onSignUpPress: () => void;
+  onFacebookLoginPress?: () => void;
+  onTwitterLoginPress?: () => void;
+  onGoogleLoginPress?: () => void;
+  onDiscordLoginPress?: () => void;
   onForgotPasswordPress: () => void;
 }
 
@@ -40,7 +56,7 @@ export default class SocialLoginScreen extends React.PureComponent<
     const {
       signUpText = "SIGN UP",
       signUpTextStyle,
-      backArrowImageSource,
+      backArrowImageSource = backArrowImage,
       onSignUpPress,
     } = this.props;
     return (
@@ -107,38 +123,45 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderClassicLoginButton = () => {
+    const {
+      loginText = "Let's cook!",
+      loginButtonBackgroundColor,
+      loginButtonShadowColor = "#58a13f",
+      onLoginPress,
+    } = this.props;
     return (
       <SocialButton
-        text="Let's cook!"
-        shadowColor="#58a13f"
-        onPress={() => {}}
+        {...this.props}
+        text={loginText}
+        onPress={onLoginPress}
+        shadowColor={loginButtonShadowColor}
+        backgroundColor={loginButtonBackgroundColor}
       />
     );
   };
 
   renderFacebookLoginButton = () => {
+    const { onFacebookLoginPress } = this.props;
     return (
-      <View style={{ marginTop: 12 }}>
+      <View style={styles.socialLoginButtonContainer}>
         <SocialButton
           width={60}
           height={60}
-          backgroundColor="#4267B2"
           shadowColor="#2f4a82"
+          backgroundColor="#4267B2"
           component={
-            <Image
-              source={require("../assets/facebook-logo.png")}
-              style={{ height: 25, width: 25 }}
-            />
+            <Image source={facebookLogo} style={styles.facebookImageStyle} />
           }
-          onPress={() => {}}
+          onPress={() => onFacebookLoginPress && onFacebookLoginPress()}
         />
       </View>
     );
   };
 
   renderTwitterLoginButton = () => {
+    const { onTwitterLoginPress } = this.props;
     return (
-      <View style={{ marginTop: 12 }}>
+      <View style={styles.socialLoginButtonContainer}>
         <SocialButton
           width={60}
           height={60}
@@ -146,38 +169,40 @@ export default class SocialLoginScreen extends React.PureComponent<
           shadowColor="#1a7aab"
           component={
             <Image
-              source={require("../assets/twitter-logo.png")}
-              style={{ height: 25, width: 25, left: 3 }}
+              source={twitterLogo}
+              style={styles.socialLoginButtonImageStyle}
             />
           }
-          onPress={() => {}}
+          onPress={() => onTwitterLoginPress && onTwitterLoginPress()}
         />
       </View>
     );
   };
 
   renderGoogleLoginButton = () => {
+    const { onGoogleLoginPress } = this.props;
     return (
-      <View style={{ marginTop: 12 }}>
+      <View style={styles.socialLoginButtonContainer}>
         <SocialButton
           width={60}
           height={60}
           backgroundColor="#fff"
           component={
             <Image
-              source={require("../assets/google-logo.png")}
-              style={{ height: 25, width: 25, left: 3 }}
+              source={googleLogo}
+              style={styles.socialLoginButtonImageStyle}
             />
           }
-          onPress={() => {}}
+          onPress={() => onGoogleLoginPress && onGoogleLoginPress()}
         />
       </View>
     );
   };
 
   renderDiscordLoginButton = () => {
+    const { onDiscordLoginPress } = this.props;
     return (
-      <View style={{ marginTop: 12 }}>
+      <View style={styles.socialLoginButtonContainer}>
         <SocialButton
           width={60}
           height={60}
@@ -185,11 +210,11 @@ export default class SocialLoginScreen extends React.PureComponent<
           shadowColor="#4e5e96"
           component={
             <Image
-              source={require("../assets/discord-logo.png")}
-              style={{ height: 30, width: 30, left: 3 }}
+              source={discordLogo}
+              style={styles.socialLoginButtonImageStyle}
             />
           }
-          onPress={() => {}}
+          onPress={() => onDiscordLoginPress && onDiscordLoginPress()}
         />
       </View>
     );
@@ -197,9 +222,9 @@ export default class SocialLoginScreen extends React.PureComponent<
 
   renderSocialButtons = () => {
     return (
-      <View style={{ marginTop: 32 }}>
+      <View style={styles.socialButtonsContainer}>
         {this.renderClassicLoginButton()}
-        <ScrollView contentInset={{ bottom: 100 }}>
+        <ScrollView contentInset={styles.socialLoginButtonsContentInset}>
           {this.renderFacebookLoginButton()}
           {this.renderTwitterLoginButton()}
           {this.renderGoogleLoginButton()}
@@ -209,29 +234,43 @@ export default class SocialLoginScreen extends React.PureComponent<
     );
   };
 
+  renderRightTopAsset = () => {
+    const { rightTopAssetImageSource } = this.props;
+    return (
+      <View style={styles.rightTopAssetContainer}>
+        <Image
+          resizeMode="contain"
+          source={rightTopAssetImageSource}
+          style={styles.rightTopAssetImageStyle}
+        />
+      </View>
+    );
+  };
+
+  renderLeftBottomAsset = () => {
+    const { leftBottomAssetImageSource } = this.props;
+    return (
+      <View style={styles.leftBottomAssetContainer}>
+        <Image
+          resizeMode="contain"
+          source={leftBottomAssetImageSource}
+          style={styles.leftBottomAssetImageStyle}
+        />
+      </View>
+    );
+  };
+
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
         {this.renderHeader()}
-        <View style={{ position: "absolute", right: -24, top: -32 }}>
-          <Image
-            resizeMode="contain"
-            source={require("../assets/ramen.png")}
-            style={{ height: ScreenWidth * 0.55, width: ScreenWidth * 0.55 }}
-          />
-        </View>
-        <View style={{ marginTop: ScreenHeight * 0.1 }}>
+        {this.renderRightTopAsset()}
+        <View style={styles.contentContainer}>
           {this.renderLoginTitle()}
           {this.renderTextFieldContainer()}
           {this.renderSocialButtons()}
         </View>
-        <View style={{ position: "absolute", bottom: -32, left: -32 }}>
-          <Image
-            resizeMode="contain"
-            source={require("../assets/chef.png")}
-            style={{ height: ScreenWidth * 0.7, width: ScreenWidth * 0.7 }}
-          />
-        </View>
+        {this.renderLeftBottomAsset()}
       </SafeAreaView>
     );
   }
