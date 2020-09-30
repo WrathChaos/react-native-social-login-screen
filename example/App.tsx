@@ -7,7 +7,14 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen
-        backArrowImageSource={require("./assets/left-arrow.png")}
+        enableFacebookLogin
+        onFacebookLoginPress={() => {}}
+        enableDiscordLogin
+        onDiscordLoginPress={() => {}}
+        enableTwitterLogin
+        onTwitterLoginPress={() => {}}
+        enableGoogleLogin
+        onGoogleLoginPress={() => {}}
         signUpTextStyle={{
           fontFamily: "Sansita-Regular",
         }}

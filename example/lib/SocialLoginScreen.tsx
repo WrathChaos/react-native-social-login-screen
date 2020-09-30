@@ -4,7 +4,6 @@ import {
   View,
   Image,
   TextStyle,
-  Dimensions,
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
@@ -16,7 +15,6 @@ import styles from "./SocialLoginScreen.style";
 import TextField from "./components/TextField/TextField";
 import SocialButton from "./components/SocialButton/SocialButton";
 
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 // ? Assets
 const backArrowImage = require("./local-assets/left-arrow.png");
 const facebookLogo = require("./local-assets/facebook-logo.png");
@@ -31,6 +29,10 @@ interface IProps {
   forgotPasswordText?: string;
   loginButtonShadowColor?: string;
   loginButtonBackgroundColor?: string;
+  enableFacebookLogin?: boolean;
+  enableTwitterLogin?: boolean;
+  enableGoogleLogin?: boolean;
+  enableDiscordLogin?: boolean;
   loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
   forgotPasswordTextStyle?: TextStyle;
@@ -221,14 +223,20 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderSocialButtons = () => {
+    const {
+      enableFacebookLogin,
+      enableTwitterLogin,
+      enableGoogleLogin,
+      enableDiscordLogin,
+    } = this.props;
     return (
       <View style={styles.socialButtonsContainer}>
         {this.renderClassicLoginButton()}
         <ScrollView contentInset={styles.socialLoginButtonsContentInset}>
-          {this.renderFacebookLoginButton()}
-          {this.renderTwitterLoginButton()}
-          {this.renderGoogleLoginButton()}
-          {this.renderDiscordLoginButton()}
+          {enableFacebookLogin && this.renderFacebookLoginButton()}
+          {enableTwitterLogin && this.renderTwitterLoginButton()}
+          {enableGoogleLogin && this.renderGoogleLoginButton()}
+          {enableDiscordLogin && this.renderDiscordLoginButton()}
         </ScrollView>
       </View>
     );
