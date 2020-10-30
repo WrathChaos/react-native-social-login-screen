@@ -22,7 +22,7 @@ const twitterLogo = require("./local-assets/twitter-logo.png");
 const googleLogo = require("./local-assets/google-logo.png");
 const discordLogo = require("./local-assets/discord-logo.png");
 
-interface IProps {
+export interface ISocialLoginProps {
   loginText?: string;
   signUpText?: string;
   loginTitleText?: string;
@@ -58,7 +58,7 @@ interface IProps {
 interface IState {}
 
 export default class SocialLoginScreen extends React.PureComponent<
-  IProps,
+  ISocialLoginProps,
   IState
 > {
   renderHeader = () => {
@@ -109,19 +109,19 @@ export default class SocialLoginScreen extends React.PureComponent<
     return (
       <View style={styles.textFieldContainer}>
         <TextField
+          {...this.props}
           placeholder={usernamePlaceholder}
           textFieldStyle={usernameTextFieldStyle}
           onChangeText={onUserNameChangeText}
-          {...this.props}
         />
         <View style={styles.passwordTextFieldContainer}>
           <TextField
             width="70%"
             secureTextEntry
+            {...this.props}
             placeholder={passwordPlaceholder}
             textFieldStyle={passwordTextFieldStyle}
             onChangeText={onPasswordChangeText}
-            {...this.props}
           />
         </View>
         {this.renderForgotPassword()}

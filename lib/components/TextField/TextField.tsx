@@ -13,7 +13,11 @@ interface ITextFieldProps extends TextInputProps {
 const TextField = (props: ITextFieldProps) => {
   const { width = "85%", textFieldStyle } = props;
   return (
-    <TextInput style={[_textInputStyle(width), textFieldStyle]} {...props} />
+    <TextInput
+      placeholderTextColor="#ccc"
+      {...props}
+      style={[_textInputStyle(width), textFieldStyle]}
+    />
   );
 };
 
