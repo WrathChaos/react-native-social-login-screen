@@ -48,6 +48,7 @@ npm i react-native-social-login-screen
 
 ```js
 "react-native-androw": ">= 0.0.34"
+"react-native-spinkit": "^1.5.1"
 ```
 
 # Usage
