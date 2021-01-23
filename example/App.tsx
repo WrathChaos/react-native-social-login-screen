@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "react-native-social-login-screen";
+// import SocialLoginScreen from "react-native-social-login-screen";
+import SocialLoginScreen from "./lib/SocialLoginScreen";
 
 const App = () => {
+  const [isSpinner, setIsSpinner] = useState(false);
+  const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
   return (
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
@@ -15,9 +18,21 @@ const App = () => {
         rightTopAssetImageSource={require("./assets/ramen.png")}
         leftBottomAssetImageSource={require("./assets/chef.png")}
         enableFacebookLogin
-        onFacebookLoginPress={() => {}}
+        onFacebookLoginPress={() => {
+          setIsSpinner(true);
+          setTimeout(() => {
+            setIsSpinner(false);
+          }, 2000);
+        }}
+        facebookSpinnerVisibility={isSpinner}
+        discordSpinnerVisibility={isDiscordSpinner}
         enableDiscordLogin
-        onDiscordLoginPress={() => {}}
+        onDiscordLoginPress={() => {
+          setIsDiscordSpinner(true);
+          setTimeout(() => {
+            setIsDiscordSpinner(false);
+          }, 2000);
+        }}
         // enableTwitterLogin
         // onTwitterLoginPress={() => {}}
         // enableGoogleLogin
