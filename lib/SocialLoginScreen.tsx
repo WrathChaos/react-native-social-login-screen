@@ -44,6 +44,18 @@ export interface ISocialLoginProps {
   passwordTextFieldStyle?: any;
   rightTopAssetImageSource?: any;
   leftBottomAssetImageSource?: any;
+  loginButtonSpinnerVisibility?: boolean;
+  facebookSpinnerVisibility?: boolean;
+  discordSpinnerVisibility?: boolean;
+  twitterSpinnerVisibility?: boolean;
+  googleSpinnerVisibility?: boolean;
+  spinnerSize?: number;
+  spinnerType?: string;
+  loginButtonSpinnerColor?: string;
+  facebookSpinnerColor?: string;
+  twitterSpinnerColor?: string;
+  googleSpinnerColor?: string;
+  discordSpinnerColor?: string;
   onLoginPress: () => void;
   onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
@@ -152,6 +164,10 @@ export default class SocialLoginScreen extends React.PureComponent<
       loginText = "Let's cook!",
       loginButtonBackgroundColor,
       loginButtonShadowColor = "#58a13f",
+      loginButtonSpinnerVisibility,
+      spinnerSize,
+      spinnerType,
+      loginButtonSpinnerColor,
       onLoginPress,
     } = this.props;
     return (
@@ -161,12 +177,22 @@ export default class SocialLoginScreen extends React.PureComponent<
         onPress={onLoginPress}
         shadowColor={loginButtonShadowColor}
         backgroundColor={loginButtonBackgroundColor}
+        isSpinner={loginButtonSpinnerVisibility}
+        spinnerSize={spinnerSize}
+        spinnerType={spinnerType}
+        spinnerColor={loginButtonSpinnerColor}
       />
     );
   };
 
   renderFacebookLoginButton = () => {
-    const { onFacebookLoginPress } = this.props;
+    const {
+      onFacebookLoginPress,
+      facebookSpinnerVisibility,
+      spinnerSize,
+      spinnerType,
+      facebookSpinnerColor,
+    } = this.props;
     return (
       <View style={styles.socialLoginButtonContainer}>
         <SocialButton
@@ -174,6 +200,10 @@ export default class SocialLoginScreen extends React.PureComponent<
           height={60}
           shadowColor="#2f4a82"
           backgroundColor="#4267B2"
+          isSpinner={facebookSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={facebookSpinnerColor}
           component={
             <Image source={facebookLogo} style={styles.facebookImageStyle} />
           }
@@ -184,7 +214,13 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderTwitterLoginButton = () => {
-    const { onTwitterLoginPress } = this.props;
+    const {
+      onTwitterLoginPress,
+      twitterSpinnerVisibility,
+      spinnerSize,
+      spinnerType,
+      twitterSpinnerColor,
+    } = this.props;
     return (
       <View style={styles.socialLoginButtonContainer}>
         <SocialButton
@@ -192,6 +228,10 @@ export default class SocialLoginScreen extends React.PureComponent<
           height={60}
           backgroundColor="#1DA1F2"
           shadowColor="#1a7aab"
+          isSpinner={twitterSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={twitterSpinnerColor}
           component={
             <Image
               source={twitterLogo}
@@ -205,13 +245,23 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderGoogleLoginButton = () => {
-    const { onGoogleLoginPress } = this.props;
+    const {
+      onGoogleLoginPress,
+      googleSpinnerVisibility,
+      spinnerSize,
+      spinnerType,
+      googleSpinnerColor,
+    } = this.props;
     return (
       <View style={styles.socialLoginButtonContainer}>
         <SocialButton
           width={60}
           height={60}
           backgroundColor="#fff"
+          isSpinner={googleSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={googleSpinnerColor}
           component={
             <Image
               source={googleLogo}
@@ -225,7 +275,13 @@ export default class SocialLoginScreen extends React.PureComponent<
   };
 
   renderDiscordLoginButton = () => {
-    const { onDiscordLoginPress } = this.props;
+    const {
+      onDiscordLoginPress,
+      discordSpinnerVisibility,
+      spinnerSize,
+      spinnerType,
+      discordSpinnerColor,
+    } = this.props;
     return (
       <View style={styles.socialLoginButtonContainer}>
         <SocialButton
@@ -233,6 +289,10 @@ export default class SocialLoginScreen extends React.PureComponent<
           height={60}
           backgroundColor="#7289DA"
           shadowColor="#4e5e96"
+          isSpinner={discordSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={discordSpinnerColor}
           component={
             <Image
               source={discordLogo}
