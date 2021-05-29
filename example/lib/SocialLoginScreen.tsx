@@ -58,6 +58,9 @@ export interface ISocialLoginProps {
   twitterSpinnerColor?: string;
   googleSpinnerColor?: string;
   discordSpinnerColor?: string;
+  onNewUsernameChangeText?: (text: string) => void;
+  onNewEmailChangeText?: (text: string) => void;
+  onNewPasswordChangeText?: (text: string) => void;
   onLoginPress: () => void;
   onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
@@ -79,7 +82,7 @@ export interface ISocialLoginProps {
   emailTextFieldStyle?: TextStyle;
   signinButtonContainer?: ViewStyle;
   onloginTextPress?: () => void;
-  onSigninPress?: () => void;
+  onSigninPress: () => void;
   onEmailChangeText?: (text: string) => void;
 }
 
@@ -406,13 +409,13 @@ export default class SocialLoginScreen extends React.PureComponent<
             emailPlaceholder={this.props.emailPlaceholder}
             emailTextFieldStyle={this.props.emailTextFieldStyle}
             signinButtonContainer={this.props.signinButtonContainer}
-            onUserNameChangeText={this.props.onUserNameChangeText}
-            onPasswordChangeText={this.props.onPasswordChangeText}
+            onUserNameChangeText={this.props.onNewUsernameChangeText}
+            onPasswordChangeText={this.props.onNewPasswordChangeText}
             onloginTextPress={() =>
               this.setState({ signUpScreenVisibility: false })
             }
             onSigninPress={this.props.onSigninPress}
-            onEmailChangeText={this.props.onEmailChangeText}
+            onEmailChangeText={this.props.onNewEmailChangeText}
           />
         </SafeAreaView>
       );

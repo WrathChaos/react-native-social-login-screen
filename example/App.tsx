@@ -4,6 +4,8 @@ import SocialLoginScreen from "./lib/SocialLoginScreen";
 
 const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);
+  const [isSigninButtonSpinner, setIsSigninButtonSpinner] = useState(false);
+
   const [isFacebookSpinner, setIsFacebookSpinner] = useState(false);
   const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
   const [isGoogleSpinner, setIsGoogleSpinner] = useState(false);
@@ -12,6 +14,15 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen
+        onNewEmailChangeText={(newEmail) =>
+          console.log("New email: ", newEmail)
+        }
+        onNewUsernameChangeText={(newUsername) =>
+          console.log("New username: ", newUsername)
+        }
+        onNewPasswordChangeText={(newPassword) =>
+          console.log("New password: ", newPassword)
+        }
         onUserNameChangeText={(username) => console.log("Username: ", username)}
         onPasswordChangeText={(password) => console.log("Password: ", password)}
         onSignUpPress={() => {}}
@@ -21,7 +32,14 @@ const App = () => {
             setIsLoginButtonSpinner(false);
           }, 2000);
         }}
+        onSigninPress={() => {
+          setIsSigninButtonSpinner(true);
+          setTimeout(() => {
+            setIsSigninButtonSpinner(false);
+          }, 2000);
+        }}
         loginButtonSpinnerVisibility={isLoginButtonSpinner}
+        signinButtonSpinnerVisibility={isSigninButtonSpinner}
         onForgotPasswordPress={() => {}}
         rightTopAssetImageSource={require("./assets/ramen.png")}
         leftBottomAssetImageSource={require("./assets/chef.png")}
@@ -69,6 +87,9 @@ const App = () => {
         }}
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
+        }}
+        signinTextStyle={{
+          fontFamily: "Athelas-Bold",
         }}
       />
     </>

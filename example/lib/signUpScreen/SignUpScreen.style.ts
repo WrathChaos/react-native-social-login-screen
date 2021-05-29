@@ -32,7 +32,7 @@ interface Style {
   leftBottomAssetContainer: ViewStyle;
   leftBottomAssetImageStyle: ImageStyle;
   signinButtonContainer: ViewStyle;
-  emailFieldContainer: ViewStyle;
+  usernameFieldContainer: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -121,9 +121,9 @@ export default StyleSheet.create<Style>({
     height: ScreenWidth * 0.7,
   },
   signinButtonContainer: {
-    marginTop: 20,
+    marginTop: 44,
   },
-  emailFieldContainer: {
+  usernameFieldContainer: {
     marginTop: 24,
   },
 });

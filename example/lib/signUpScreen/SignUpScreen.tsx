@@ -39,7 +39,7 @@ export interface ISocialLoginProps {
   spinnerSize?: number;
   spinnerType?: string;
   signinButtonSpinnerColor?: string;
-  onSigninPress?: () => void;
+  onSigninPress: () => void;
   leftBottomAssetImageSource?: any;
   emailPlaceholder?: string;
   emailTextFieldStyle?: TextStyle;
@@ -119,23 +119,23 @@ export default class SignUpScreen extends React.PureComponent<
     return (
       <View style={styles.textFieldContainer}>
         <TextField
-          width="70%"
           {...this.props}
-          placeholder={usernamePlaceholder}
-          textFieldStyle={usernameTextFieldStyle}
-          onChangeText={onUserNameChangeText}
+          placeholder={emailPlaceholder}
+          textFieldStyle={emailTextFieldStyle}
+          onChangeText={onEmailChangeText}
         />
-        <View style={styles.emailFieldContainer}>
+        <View style={styles.usernameFieldContainer}>
           <TextField
+            width="70%"
             {...this.props}
-            placeholder={emailPlaceholder}
-            textFieldStyle={emailTextFieldStyle}
-            onChangeText={onEmailChangeText}
+            placeholder={usernamePlaceholder}
+            textFieldStyle={usernameTextFieldStyle}
+            onChangeText={onUserNameChangeText}
           />
         </View>
         <View style={styles.passwordTextFieldContainer}>
           <TextField
-            width="70%"
+            width="50%"
             secureTextEntry
             {...this.props}
             placeholder={passwordPlaceholder}
