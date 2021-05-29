@@ -31,6 +31,7 @@ interface Style {
   contentContainer: ViewStyle;
   leftBottomAssetContainer: ViewStyle;
   leftBottomAssetImageStyle: ImageStyle;
+  signinButtonContainer: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -117,5 +118,8 @@ export default StyleSheet.create<Style>({
   leftBottomAssetImageStyle: {
     width: ScreenWidth * 0.7,
     height: ScreenWidth * 0.7,
+  },
+  signinButtonContainer: {
+    marginTop: 20,
   },
 });

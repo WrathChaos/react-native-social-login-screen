@@ -7,6 +7,7 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 /**
  * ? Local Imports
@@ -66,6 +67,20 @@ export interface ISocialLoginProps {
   onDiscordLoginPress?: () => void;
   onUserNameChangeText: (text: string) => void;
   onPasswordChangeText: (text: string) => void;
+  //? Only Sign In Screen Props
+  signinTitleText?: string;
+  signinTextStyle?: TextStyle;
+  signinText?: string;
+  signinButtonBackgroundColor?: string;
+  signinButtonShadowColor?: string;
+  signinButtonSpinnerVisibility?: boolean;
+  signinButtonSpinnerColor?: string;
+  emailPlaceholder?: string;
+  emailTextFieldStyle?: TextStyle;
+  signinButtonContainer?: ViewStyle;
+  onloginTextPress?: () => void;
+  onSigninPress?: () => void;
+  onEmailChangeText?: (text: string) => void;
 }
 
 interface IState {
@@ -368,8 +383,34 @@ export default class SocialLoginScreen extends React.PureComponent<
       return (
         <SafeAreaView style={styles.container}>
           <SignUpScreen
+            loginText={this.props.loginText}
+            loginTextStyle={this.props.loginTextStyle}
+            backArrowImageSource={this.props.backArrowImageSource}
             rightTopAssetImageSource={this.props.rightTopAssetImageSource}
             leftBottomAssetImageSource={this.props.leftBottomAssetImageSource}
+            signinTitleText={this.props.signinTitleText}
+            signinTextStyle={this.props.signinTextStyle}
+            usernameTextFieldStyle={this.props.usernameTextFieldStyle}
+            usernamePlaceholder={this.props.usernamePlaceholder}
+            passwordPlaceholder={this.props.passwordPlaceholder}
+            passwordTextFieldStyle={this.props.passwordTextFieldStyle}
+            signinText={this.props.signinText}
+            signinButtonBackgroundColor={this.props.signinButtonBackgroundColor}
+            signinButtonShadowColor={this.props.signinButtonShadowColor}
+            signinButtonSpinnerVisibility={
+              this.props.signinButtonSpinnerVisibility
+            }
+            spinnerSize={this.props.spinnerSize}
+            spinnerType={this.props.spinnerType}
+            signinButtonSpinnerColor={this.props.signinButtonSpinnerColor}
+            emailPlaceholder={this.props.emailPlaceholder}
+            emailTextFieldStyle={this.props.emailTextFieldStyle}
+            signinButtonContainer={this.props.signinButtonContainer}
+            onUserNameChangeText={this.props.onUserNameChangeText}
+            onPasswordChangeText={this.props.onPasswordChangeText}
+            onloginTextPress={this.props.onloginTextPress}
+            onSigninPress={this.props.onSigninPress}
+            onEmailChangeText={this.props.onEmailChangeText}
           />
         </SafeAreaView>
       );

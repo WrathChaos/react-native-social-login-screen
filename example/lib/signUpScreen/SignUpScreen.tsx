@@ -4,9 +4,9 @@ import {
   View,
   Image,
   TextStyle,
-  ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 /**
  * ? Local Imports
@@ -19,28 +19,32 @@ import SocialButton from "../components/SocialButton/SocialButton";
 const backArrowImage = require("../local-assets/left-arrow.png");
 
 export interface ISocialLoginProps {
-  loginText: string;
-  loginTextStyle: TextStyle;
-  backArrowImageSource: string;
-  rightTopAssetImageSource: string;
-  signinTitleText: string;
-  signinTextStyle: TextStyle;
-  usernameTextFieldStyle: TextStyle;
-  usernamePlaceholder: string;
-  onUserNameChangeText: () => void;
-  passwordPlaceholder: string;
-  onPasswordChangeText: () => void;
-  passwordTextFieldStyle: TextStyle;
-  onloginTextPress: () => void;
-  signinText: string;
-  signinButtonBackgroundColor: string;
-  signinButtonShadowColor: string;
-  signinButtonSpinnerVisibility: boolean;
-  spinnerSize: number;
-  spinnerType: string;
-  signinButtonSpinnerColor: string;
-  onSigninPress: () => void;
-  leftBottomAssetImageSource: string;
+  loginText?: string;
+  loginTextStyle?: TextStyle;
+  backArrowImageSource?: any;
+  rightTopAssetImageSource?: any;
+  signinTitleText?: string;
+  signinTextStyle?: TextStyle;
+  usernameTextFieldStyle?: TextStyle;
+  usernamePlaceholder?: string;
+  onUserNameChangeText?: (text: string) => void;
+  passwordPlaceholder?: string;
+  onPasswordChangeText?: (text: string) => void;
+  passwordTextFieldStyle?: TextStyle;
+  onloginTextPress?: () => void;
+  signinText?: string;
+  signinButtonBackgroundColor?: string;
+  signinButtonShadowColor?: string;
+  signinButtonSpinnerVisibility?: boolean;
+  spinnerSize?: number;
+  spinnerType?: string;
+  signinButtonSpinnerColor?: string;
+  onSigninPress?: () => void;
+  leftBottomAssetImageSource?: any;
+  emailPlaceholder?: string;
+  emailTextFieldStyle?: TextStyle;
+  onEmailChangeText?: (text: string) => void;
+  signinButtonContainer?: ViewStyle;
 }
 
 interface IState {}
@@ -103,11 +107,14 @@ export default class SignUpScreen extends React.PureComponent<
   renderTextFieldContainer = () => {
     const {
       usernameTextFieldStyle,
-      usernamePlaceholder = "john_doe@example.com",
+      usernamePlaceholder = "john doe",
       onUserNameChangeText,
       passwordPlaceholder = "• • • • • • • •",
       onPasswordChangeText,
       passwordTextFieldStyle,
+      emailPlaceholder = "john_due@gmail.com",
+      emailTextFieldStyle,
+      onEmailChangeText,
     } = this.props;
     return (
       <View style={styles.textFieldContainer}>
@@ -116,14 +123,14 @@ export default class SignUpScreen extends React.PureComponent<
           {...this.props}
           placeholder={usernamePlaceholder}
           textFieldStyle={usernameTextFieldStyle}
-          onChangeText={onPasswordChangeText}
+          onChangeText={onUserNameChangeText}
         />
         <View style={styles.passwordTextFieldContainer}>
           <TextField
             {...this.props}
-            placeholder={usernamePlaceholder}
-            textFieldStyle={usernameTextFieldStyle}
-            onChangeText={onUserNameChangeText}
+            placeholder={emailPlaceholder}
+            textFieldStyle={emailTextFieldStyle}
+            onChangeText={onEmailChangeText}
           />
         </View>
         <View style={styles.passwordTextFieldContainer}>
@@ -150,19 +157,22 @@ export default class SignUpScreen extends React.PureComponent<
       spinnerType,
       signinButtonSpinnerColor,
       onSigninPress,
+      signinButtonContainer,
     } = this.props;
     return (
-      <SocialButton
-        {...this.props}
-        text={signinText}
-        onPress={onSigninPress}
-        shadowColor={signinButtonShadowColor}
-        backgroundColor={signinButtonBackgroundColor}
-        isSpinner={signinButtonSpinnerVisibility}
-        spinnerSize={spinnerSize}
-        spinnerType={spinnerType}
-        spinnerColor={signinButtonSpinnerColor}
-      />
+      <View style={[styles.signinButtonContainer, signinButtonContainer]}>
+        <SocialButton
+          {...this.props}
+          text={signinText}
+          onPress={onSigninPress}
+          shadowColor={signinButtonShadowColor}
+          backgroundColor={signinButtonBackgroundColor}
+          isSpinner={signinButtonSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={signinButtonSpinnerColor}
+        />
+      </View>
     );
   };
 
