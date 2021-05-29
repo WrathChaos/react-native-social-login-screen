@@ -7,6 +7,7 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 /**
  * ? Local Imports
@@ -14,6 +15,7 @@ import {
 import styles from "./SocialLoginScreen.style";
 import TextField from "./components/TextField/TextField";
 import SocialButton from "./components/SocialButton/SocialButton";
+import SignUpScreen from "./signUpScreen/SignUpScreen";
 
 // ? Assets
 const backArrowImage = require("./local-assets/left-arrow.png");
@@ -56,6 +58,9 @@ export interface ISocialLoginProps {
   twitterSpinnerColor?: string;
   googleSpinnerColor?: string;
   discordSpinnerColor?: string;
+  onNewUsernameChangeText?: (text: string) => void;
+  onNewEmailChangeText?: (text: string) => void;
+  onNewPasswordChangeText?: (text: string) => void;
   onLoginPress: () => void;
   onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
@@ -65,14 +70,36 @@ export interface ISocialLoginProps {
   onDiscordLoginPress?: () => void;
   onUserNameChangeText: (text: string) => void;
   onPasswordChangeText: (text: string) => void;
+  //? Only Sign In Screen Props
+  signinTitleText?: string;
+  signinTextStyle?: TextStyle;
+  signinText?: string;
+  signinButtonBackgroundColor?: string;
+  signinButtonShadowColor?: string;
+  signinButtonSpinnerVisibility?: boolean;
+  signinButtonSpinnerColor?: string;
+  emailPlaceholder?: string;
+  emailTextFieldStyle?: TextStyle;
+  signinButtonContainer?: ViewStyle;
+  onloginTextPress?: () => void;
+  onSigninPress: () => void;
+  onEmailChangeText?: (text: string) => void;
 }
 
-interface IState {}
+interface IState {
+  signUpScreenVisibility: boolean;
+}
 
 export default class SocialLoginScreen extends React.PureComponent<
   ISocialLoginProps,
   IState
 > {
+  constructor(props: ISocialLoginProps) {
+    super(props);
+    this.state = {
+      signUpScreenVisibility: false,
+    };
+  }
   renderHeader = () => {
     const {
       signUpText = "SIGN UP",
@@ -84,7 +111,7 @@ export default class SocialLoginScreen extends React.PureComponent<
       <View style={styles.headerContainer}>
         <TouchableOpacity
           style={styles.headerContainerGlue}
-          onPress={onSignUpPress}
+          onPress={() => this.setState({ signUpScreenVisibility: true })}
         >
           <Image
             source={backArrowImageSource}
@@ -354,17 +381,64 @@ export default class SocialLoginScreen extends React.PureComponent<
     );
   };
 
+  renderScreenControl = () => {
+    if (this.state.signUpScreenVisibility) {
+      return (
+        <SafeAreaView style={styles.container}>
+          <SignUpScreen
+            loginText={this.props.loginText}
+            loginTextStyle={this.props.loginTextStyle}
+            backArrowImageSource={this.props.backArrowImageSource}
+            rightTopAssetImageSource={this.props.rightTopAssetImageSource}
+            leftBottomAssetImageSource={this.props.leftBottomAssetImageSource}
+            signinTitleText={this.props.signinTitleText}
+            signinTextStyle={this.props.signinTextStyle}
+            usernameTextFieldStyle={this.props.usernameTextFieldStyle}
+            usernamePlaceholder={this.props.usernamePlaceholder}
+            passwordPlaceholder={this.props.passwordPlaceholder}
+            passwordTextFieldStyle={this.props.passwordTextFieldStyle}
+            signinText={this.props.signinText}
+            signinButtonBackgroundColor={this.props.signinButtonBackgroundColor}
+            signinButtonShadowColor={this.props.signinButtonShadowColor}
+            signinButtonSpinnerVisibility={
+              this.props.signinButtonSpinnerVisibility
+            }
+            spinnerSize={this.props.spinnerSize}
+            spinnerType={this.props.spinnerType}
+            signinButtonSpinnerColor={this.props.signinButtonSpinnerColor}
+            emailPlaceholder={this.props.emailPlaceholder}
+            emailTextFieldStyle={this.props.emailTextFieldStyle}
+            signinButtonContainer={this.props.signinButtonContainer}
+            onUserNameChangeText={this.props.onNewUsernameChangeText}
+            onPasswordChangeText={this.props.onNewPasswordChangeText}
+            onloginTextPress={() =>
+              this.setState({ signUpScreenVisibility: false })
+            }
+            onSigninPress={this.props.onSigninPress}
+            onEmailChangeText={this.props.onNewEmailChangeText}
+          />
+        </SafeAreaView>
+      );
+    } else {
+      return (
+        <SafeAreaView style={styles.container}>
+          {this.renderHeader()}
+          {this.renderRightTopAsset()}
+          <View style={styles.contentContainer}>
+            {this.renderLoginTitle()}
+            {this.renderTextFieldContainer()}
+            {this.renderSocialButtons()}
+          </View>
+          {this.renderLeftBottomAsset()}
+        </SafeAreaView>
+      );
+    }
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        {this.renderHeader()}
-        {this.renderRightTopAsset()}
-        <View style={styles.contentContainer}>
-          {this.renderLoginTitle()}
-          {this.renderTextFieldContainer()}
-          {this.renderSocialButtons()}
-        </View>
-        {this.renderLeftBottomAsset()}
+        {this.renderScreenControl()}
       </SafeAreaView>
     );
   }
