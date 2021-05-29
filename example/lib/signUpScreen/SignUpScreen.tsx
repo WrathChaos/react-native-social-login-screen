@@ -125,7 +125,7 @@ export default class SignUpScreen extends React.PureComponent<
           textFieldStyle={usernameTextFieldStyle}
           onChangeText={onUserNameChangeText}
         />
-        <View style={styles.passwordTextFieldContainer}>
+        <View style={styles.emailFieldContainer}>
           <TextField
             {...this.props}
             placeholder={emailPlaceholder}

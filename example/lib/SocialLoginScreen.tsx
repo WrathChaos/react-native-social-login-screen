@@ -408,7 +408,9 @@ export default class SocialLoginScreen extends React.PureComponent<
             signinButtonContainer={this.props.signinButtonContainer}
             onUserNameChangeText={this.props.onUserNameChangeText}
             onPasswordChangeText={this.props.onPasswordChangeText}
-            onloginTextPress={this.props.onloginTextPress}
+            onloginTextPress={() =>
+              this.setState({ signUpScreenVisibility: false })
+            }
             onSigninPress={this.props.onSigninPress}
             onEmailChangeText={this.props.onEmailChangeText}
           />
