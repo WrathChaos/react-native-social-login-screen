@@ -4,7 +4,6 @@ import {
   TextStyle,
   StyleSheet,
   Dimensions,
-  NativeScrollRectangle,
 } from "react-native";
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
@@ -18,14 +17,6 @@ interface Style {
   signinTitleContainer: ViewStyle;
   textFieldContainer: ViewStyle;
   passwordTextFieldContainer: ViewStyle;
-  forgotPasswordContainer: ViewStyle;
-  forgotPasswordTextStyle: TextStyle;
-  socialLoginButtonContainer: ViewStyle;
-  facebookImageStyle: ImageStyle;
-  socialLoginButtonImageStyle: ImageStyle;
-  socialButtonsContainer: ViewStyle;
-  socialButtonsContainerGlue: ViewStyle;
-  socialLoginButtonsContentInset: NativeScrollRectangle;
   rightTopAssetContainer: ViewStyle;
   rightTopAssetImageStyle: ImageStyle;
   contentContainer: ViewStyle;
@@ -59,7 +50,6 @@ export default StyleSheet.create<Style>({
   },
   signinTextStyle: {
     fontSize: 40,
-    // fontWeight: "bold",
   },
   signinTitleContainer: {
     marginLeft: 32,
@@ -69,35 +59,6 @@ export default StyleSheet.create<Style>({
   },
   passwordTextFieldContainer: {
     marginTop: 24,
-  },
-  forgotPasswordContainer: {
-    marginTop: 24,
-    marginLeft: 32,
-  },
-  forgotPasswordTextStyle: {
-    fontSize: 14,
-    color: "#b1b2ba",
-  },
-  socialLoginButtonContainer: {
-    marginTop: 12,
-  },
-  facebookImageStyle: {
-    width: 25,
-    height: 25,
-  },
-  socialLoginButtonImageStyle: {
-    left: 3,
-    width: 25,
-    height: 25,
-  },
-  socialButtonsContainer: {
-    marginTop: 32,
-  },
-  socialButtonsContainerGlue: {
-    paddingBottom: 32,
-  },
-  socialLoginButtonsContentInset: {
-    bottom: 100,
   },
   contentContainer: {
     marginTop: ScreenHeight * 0.1,
