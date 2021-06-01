@@ -58,11 +58,10 @@ export interface ISocialLoginProps {
   twitterSpinnerColor?: string;
   googleSpinnerColor?: string;
   discordSpinnerColor?: string;
-  onNewUsernameChangeText?: (text: string) => void;
+  onNewRepasswordChangeText?: (text: string) => void;
   onNewEmailChangeText?: (text: string) => void;
   onNewPasswordChangeText?: (text: string) => void;
   onLoginPress: () => void;
-  onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
   onFacebookLoginPress?: () => void;
   onTwitterLoginPress?: () => void;
@@ -70,19 +69,22 @@ export interface ISocialLoginProps {
   onDiscordLoginPress?: () => void;
   onUserNameChangeText: (text: string) => void;
   onPasswordChangeText: (text: string) => void;
-  //? Only Sign In Screen Props
-  signinTitleText?: string;
-  signinTextStyle?: TextStyle;
-  signinText?: string;
-  signinButtonBackgroundColor?: string;
-  signinButtonShadowColor?: string;
-  signinButtonSpinnerVisibility?: boolean;
-  signinButtonSpinnerColor?: string;
+  //? Only Sign Up Screen Props
+  signupTitleText?: string;
+  signupTextStyle?: TextStyle;
+  signupText?: string;
+  signupButtonBackgroundColor?: string;
+  signupButtonShadowColor?: string;
+  signupButtonSpinnerVisibility?: boolean;
+  signupButtonSpinnerColor?: string;
   emailPlaceholder?: string;
   emailTextFieldStyle?: TextStyle;
-  signinButtonContainer?: ViewStyle;
+  signupButtonContainer?: ViewStyle;
+  signinTextStyle?: TextStyle;
+  signinText?: string;
+  repasswordTextFieldStyle?: any;
   onloginTextPress?: () => void;
-  onSigninPress: () => void;
+  onSignupPress: () => void;
   onEmailChangeText?: (text: string) => void;
 }
 
@@ -105,7 +107,6 @@ export default class SocialLoginScreen extends React.PureComponent<
       signUpText = "SIGN UP",
       signUpTextStyle,
       backArrowImageSource = backArrowImage,
-      onSignUpPress,
     } = this.props;
     return (
       <View style={styles.headerContainer}>
@@ -386,35 +387,13 @@ export default class SocialLoginScreen extends React.PureComponent<
       return (
         <SafeAreaView style={styles.container}>
           <SignUpScreen
-            loginText={this.props.loginText}
-            loginTextStyle={this.props.loginTextStyle}
-            backArrowImageSource={this.props.backArrowImageSource}
-            rightTopAssetImageSource={this.props.rightTopAssetImageSource}
-            leftBottomAssetImageSource={this.props.leftBottomAssetImageSource}
-            signinTitleText={this.props.signinTitleText}
-            signinTextStyle={this.props.signinTextStyle}
-            usernameTextFieldStyle={this.props.usernameTextFieldStyle}
-            usernamePlaceholder={this.props.usernamePlaceholder}
-            passwordPlaceholder={this.props.passwordPlaceholder}
-            passwordTextFieldStyle={this.props.passwordTextFieldStyle}
-            signinText={this.props.signinText}
-            signinButtonBackgroundColor={this.props.signinButtonBackgroundColor}
-            signinButtonShadowColor={this.props.signinButtonShadowColor}
-            signinButtonSpinnerVisibility={
-              this.props.signinButtonSpinnerVisibility
-            }
-            spinnerSize={this.props.spinnerSize}
-            spinnerType={this.props.spinnerType}
-            signinButtonSpinnerColor={this.props.signinButtonSpinnerColor}
-            emailPlaceholder={this.props.emailPlaceholder}
-            emailTextFieldStyle={this.props.emailTextFieldStyle}
-            signinButtonContainer={this.props.signinButtonContainer}
-            onUserNameChangeText={this.props.onNewUsernameChangeText}
+            {...this.props}
+            onRepasswordChangeText={this.props.onNewRepasswordChangeText}
             onPasswordChangeText={this.props.onNewPasswordChangeText}
             onloginTextPress={() =>
               this.setState({ signUpScreenVisibility: false })
             }
-            onSigninPress={this.props.onSigninPress}
+            onSignupPress={this.props.onSignupPress}
             onEmailChangeText={this.props.onNewEmailChangeText}
           />
         </SafeAreaView>

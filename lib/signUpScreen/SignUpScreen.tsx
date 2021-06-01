@@ -19,32 +19,32 @@ import SocialButton from "../components/SocialButton/SocialButton";
 const backArrowImage = require("../local-assets/left-arrow.png");
 
 export interface ISocialLoginProps {
-  loginText?: string;
-  loginTextStyle?: TextStyle;
+  signinText?: string;
+  signinTextStyle?: TextStyle;
   backArrowImageSource?: any;
   rightTopAssetImageSource?: any;
-  signinTitleText?: string;
-  signinTextStyle?: TextStyle;
-  usernameTextFieldStyle?: TextStyle;
-  usernamePlaceholder?: string;
-  onUserNameChangeText?: (text: string) => void;
+  signupTitleText?: string;
+  signupTextStyle?: TextStyle;
+  repasswordTextFieldStyle?: TextStyle;
+  repasswordPlaceholder?: string;
+  onRepasswordChangeText?: (text: string) => void;
   passwordPlaceholder?: string;
   onPasswordChangeText?: (text: string) => void;
   passwordTextFieldStyle?: TextStyle;
   onloginTextPress?: () => void;
-  signinText?: string;
-  signinButtonBackgroundColor?: string;
-  signinButtonShadowColor?: string;
-  signinButtonSpinnerVisibility?: boolean;
+  signupText?: string;
+  signupButtonBackgroundColor?: string;
+  signupButtonShadowColor?: string;
+  signupButtonSpinnerVisibility?: boolean;
   spinnerSize?: number;
   spinnerType?: string;
-  signinButtonSpinnerColor?: string;
-  onSigninPress: () => void;
+  signupButtonSpinnerColor?: string;
+  onSignupPress: () => void;
   leftBottomAssetImageSource?: any;
   emailPlaceholder?: string;
   emailTextFieldStyle?: TextStyle;
   onEmailChangeText?: (text: string) => void;
-  signinButtonContainer?: ViewStyle;
+  signupButtonContainer?: ViewStyle;
 }
 
 interface IState {}
@@ -55,8 +55,8 @@ export default class SignUpScreen extends React.PureComponent<
 > {
   renderHeader = () => {
     const {
-      loginText = "LOG IN",
-      loginTextStyle,
+      signinText = "LOG IN",
+      signinTextStyle,
       backArrowImageSource = backArrowImage,
       onloginTextPress,
     } = this.props;
@@ -71,8 +71,8 @@ export default class SignUpScreen extends React.PureComponent<
             style={styles.headerBackImageStyle}
           />
           <View>
-            <Text style={[loginTextStyle, styles.loginTextStyle]}>
-              {loginText}
+            <Text style={[signinTextStyle, styles.signinTextStyle]}>
+              {signinText}
             </Text>
           </View>
         </TouchableOpacity>
@@ -93,12 +93,12 @@ export default class SignUpScreen extends React.PureComponent<
     );
   };
 
-  renderSigninTitle = () => {
-    const { signinTitleText = "Sign In", signinTextStyle } = this.props;
+  renderSignupTitle = () => {
+    const { signupTitleText = "Sign Up", signupTextStyle } = this.props;
     return (
-      <View style={styles.signinTitleContainer}>
-        <Text style={[styles.signinTextStyle, signinTextStyle]}>
-          {signinTitleText}
+      <View style={styles.signupTitleContainer}>
+        <Text style={[styles.signupTextStyle, signupTextStyle]}>
+          {signupTitleText}
         </Text>
       </View>
     );
@@ -106,9 +106,9 @@ export default class SignUpScreen extends React.PureComponent<
 
   renderTextFieldContainer = () => {
     const {
-      usernameTextFieldStyle,
-      usernamePlaceholder = "john doe",
-      onUserNameChangeText,
+      repasswordTextFieldStyle,
+      repasswordPlaceholder = "• • • • • • •",
+      onRepasswordChangeText,
       passwordPlaceholder = "• • • • • • • •",
       onPasswordChangeText,
       passwordTextFieldStyle,
@@ -124,18 +124,9 @@ export default class SignUpScreen extends React.PureComponent<
           textFieldStyle={emailTextFieldStyle}
           onChangeText={onEmailChangeText}
         />
-        <View style={styles.usernameFieldContainer}>
-          <TextField
-            width="70%"
-            {...this.props}
-            placeholder={usernamePlaceholder}
-            textFieldStyle={usernameTextFieldStyle}
-            onChangeText={onUserNameChangeText}
-          />
-        </View>
         <View style={styles.passwordTextFieldContainer}>
           <TextField
-            width="50%"
+            width="70%"
             secureTextEntry
             {...this.props}
             placeholder={passwordPlaceholder}
@@ -143,34 +134,43 @@ export default class SignUpScreen extends React.PureComponent<
             onChangeText={onPasswordChangeText}
           />
         </View>
+        <View style={styles.repasswordFieldContainer}>
+          <TextField
+            width="50%"
+            {...this.props}
+            placeholder={repasswordPlaceholder}
+            textFieldStyle={repasswordTextFieldStyle}
+            onChangeText={onRepasswordChangeText}
+          />
+        </View>
       </View>
     );
   };
 
-  renderSigninButton = () => {
+  renderSignupButton = () => {
     const {
-      signinText = "Sign in!",
-      signinButtonBackgroundColor,
-      signinButtonShadowColor = "#58a13f",
-      signinButtonSpinnerVisibility,
+      signupText = "Sign up!",
+      signupButtonBackgroundColor,
+      signupButtonShadowColor = "#58a13f",
+      signupButtonSpinnerVisibility,
       spinnerSize,
       spinnerType,
-      signinButtonSpinnerColor,
-      onSigninPress,
-      signinButtonContainer,
+      signupButtonSpinnerColor,
+      onSignupPress,
+      signupButtonContainer,
     } = this.props;
     return (
-      <View style={[styles.signinButtonContainer, signinButtonContainer]}>
+      <View style={[styles.signupButtonContainer, signupButtonContainer]}>
         <SocialButton
           {...this.props}
-          text={signinText}
-          onPress={onSigninPress}
-          shadowColor={signinButtonShadowColor}
-          backgroundColor={signinButtonBackgroundColor}
-          isSpinner={signinButtonSpinnerVisibility}
+          text={signupText}
+          onPress={onSignupPress}
+          shadowColor={signupButtonShadowColor}
+          backgroundColor={signupButtonBackgroundColor}
+          isSpinner={signupButtonSpinnerVisibility}
           spinnerSize={spinnerSize}
           spinnerType={spinnerType}
-          spinnerColor={signinButtonSpinnerColor}
+          spinnerColor={signupButtonSpinnerColor}
         />
       </View>
     );
@@ -195,9 +195,9 @@ export default class SignUpScreen extends React.PureComponent<
         {this.renderHeader()}
         {this.renderRightTopAsset()}
         <View style={styles.contentContainer}>
-          {this.renderSigninTitle()}
+          {this.renderSignupTitle()}
           {this.renderTextFieldContainer()}
-          {this.renderSigninButton()}
+          {this.renderSignupButton()}
         </View>
         {this.renderLeftBottomAsset()}
       </SafeAreaView>

@@ -12,9 +12,9 @@ interface Style {
   headerContainer: ViewStyle;
   headerContainerGlue: ViewStyle;
   headerBackImageStyle: ImageStyle;
-  loginTextStyle: TextStyle;
   signinTextStyle: TextStyle;
-  signinTitleContainer: ViewStyle;
+  signupTextStyle: TextStyle;
+  signupTitleContainer: ViewStyle;
   textFieldContainer: ViewStyle;
   passwordTextFieldContainer: ViewStyle;
   rightTopAssetContainer: ViewStyle;
@@ -22,8 +22,8 @@ interface Style {
   contentContainer: ViewStyle;
   leftBottomAssetContainer: ViewStyle;
   leftBottomAssetImageStyle: ImageStyle;
-  signinButtonContainer: ViewStyle;
-  usernameFieldContainer: ViewStyle;
+  signupButtonContainer: ViewStyle;
+  repasswordFieldContainer: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -43,15 +43,15 @@ export default StyleSheet.create<Style>({
     width: 12,
     height: 12,
   },
-  loginTextStyle: {
+  signinTextStyle: {
     fontSize: 16,
     marginLeft: 8,
     color: "#777684",
   },
-  signinTextStyle: {
+  signupTextStyle: {
     fontSize: 40,
   },
-  signinTitleContainer: {
+  signupTitleContainer: {
     marginLeft: 32,
   },
   textFieldContainer: {
@@ -81,10 +81,10 @@ export default StyleSheet.create<Style>({
     width: ScreenWidth * 0.7,
     height: ScreenWidth * 0.7,
   },
-  signinButtonContainer: {
+  signupButtonContainer: {
     marginTop: 44,
   },
-  usernameFieldContainer: {
+  repasswordFieldContainer: {
     marginTop: 24,
   },
 });

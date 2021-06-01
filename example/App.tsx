@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "react-native-social-login-screen";
+import SocialLoginScreen from "./lib/SocialLoginScreen";
 
 const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);
@@ -17,29 +17,28 @@ const App = () => {
         onNewEmailChangeText={(newEmail) =>
           console.log("New email: ", newEmail)
         }
-        onNewUsernameChangeText={(newUsername) =>
-          console.log("New username: ", newUsername)
+        onNewRepasswordChangeText={(newrepassword) =>
+          console.log("New repassword: ", newrepassword)
         }
         onNewPasswordChangeText={(newPassword) =>
           console.log("New password: ", newPassword)
         }
         onUserNameChangeText={(username) => console.log("Username: ", username)}
         onPasswordChangeText={(password) => console.log("Password: ", password)}
-        onSignUpPress={() => {}}
         onLoginPress={() => {
           setIsLoginButtonSpinner(true);
           setTimeout(() => {
             setIsLoginButtonSpinner(false);
           }, 2000);
         }}
-        onSigninPress={() => {
+        onSignupPress={() => {
           setIsSigninButtonSpinner(true);
           setTimeout(() => {
             setIsSigninButtonSpinner(false);
           }, 2000);
         }}
         loginButtonSpinnerVisibility={isLoginButtonSpinner}
-        signinButtonSpinnerVisibility={isSigninButtonSpinner}
+        signupButtonSpinnerVisibility={isSigninButtonSpinner}
         onForgotPasswordPress={() => {}}
         rightTopAssetImageSource={require("./assets/ramen.png")}
         leftBottomAssetImageSource={require("./assets/chef.png")}
@@ -88,7 +87,7 @@ const App = () => {
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
         }}
-        signinTextStyle={{
+        signupTextStyle={{
           fontFamily: "Athelas-Bold",
         }}
       />
