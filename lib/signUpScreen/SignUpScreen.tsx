@@ -137,6 +137,7 @@ export default class SignUpScreen extends React.PureComponent<
         <View style={styles.repasswordFieldContainer}>
           <TextField
             width="50%"
+            secureTextEntry
             {...this.props}
             placeholder={repasswordPlaceholder}
             textFieldStyle={repasswordTextFieldStyle}
