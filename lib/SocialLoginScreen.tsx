@@ -7,6 +7,7 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 /**
  * ? Local Imports
@@ -14,6 +15,7 @@ import {
 import styles from "./SocialLoginScreen.style";
 import TextField from "./components/TextField/TextField";
 import SocialButton from "./components/SocialButton/SocialButton";
+import SignUpScreen from "./signUpScreen/SignUpScreen";
 
 // ? Assets
 const backArrowImage = require("./local-assets/left-arrow.png");
@@ -56,8 +58,10 @@ export interface ISocialLoginProps {
   twitterSpinnerColor?: string;
   googleSpinnerColor?: string;
   discordSpinnerColor?: string;
+  onNewRepasswordChangeText?: (text: string) => void;
+  onNewEmailChangeText?: (text: string) => void;
+  onNewPasswordChangeText?: (text: string) => void;
   onLoginPress: () => void;
-  onSignUpPress: () => void;
   onForgotPasswordPress: () => void;
   onFacebookLoginPress?: () => void;
   onTwitterLoginPress?: () => void;
@@ -65,26 +69,50 @@ export interface ISocialLoginProps {
   onDiscordLoginPress?: () => void;
   onUserNameChangeText: (text: string) => void;
   onPasswordChangeText: (text: string) => void;
+  //? Only Sign Up Screen Props
+  signupTitleText?: string;
+  signupTextStyle?: TextStyle;
+  signupText?: string;
+  signupButtonBackgroundColor?: string;
+  signupButtonShadowColor?: string;
+  signupButtonSpinnerVisibility?: boolean;
+  signupButtonSpinnerColor?: string;
+  emailPlaceholder?: string;
+  emailTextFieldStyle?: TextStyle;
+  signupButtonContainer?: ViewStyle;
+  signinTextStyle?: TextStyle;
+  signinText?: string;
+  repasswordTextFieldStyle?: any;
+  onloginTextPress?: () => void;
+  onSignupPress: () => void;
+  onEmailChangeText?: (text: string) => void;
 }
 
-interface IState {}
+interface IState {
+  signUpScreenVisibility: boolean;
+}
 
 export default class SocialLoginScreen extends React.PureComponent<
   ISocialLoginProps,
   IState
 > {
+  constructor(props: ISocialLoginProps) {
+    super(props);
+    this.state = {
+      signUpScreenVisibility: false,
+    };
+  }
   renderHeader = () => {
     const {
       signUpText = "SIGN UP",
       signUpTextStyle,
       backArrowImageSource = backArrowImage,
-      onSignUpPress,
     } = this.props;
     return (
       <View style={styles.headerContainer}>
         <TouchableOpacity
           style={styles.headerContainerGlue}
-          onPress={onSignUpPress}
+          onPress={() => this.setState({ signUpScreenVisibility: true })}
         >
           <Image
             source={backArrowImageSource}
@@ -354,17 +382,42 @@ export default class SocialLoginScreen extends React.PureComponent<
     );
   };
 
+  renderScreenControl = () => {
+    if (this.state.signUpScreenVisibility) {
+      return (
+        <SafeAreaView style={styles.container}>
+          <SignUpScreen
+            {...this.props}
+            onRepasswordChangeText={this.props.onNewRepasswordChangeText}
+            onPasswordChangeText={this.props.onNewPasswordChangeText}
+            onloginTextPress={() =>
+              this.setState({ signUpScreenVisibility: false })
+            }
+            onSignupPress={this.props.onSignupPress}
+            onEmailChangeText={this.props.onNewEmailChangeText}
+          />
+        </SafeAreaView>
+      );
+    } else {
+      return (
+        <SafeAreaView style={styles.container}>
+          {this.renderHeader()}
+          {this.renderRightTopAsset()}
+          <View style={styles.contentContainer}>
+            {this.renderLoginTitle()}
+            {this.renderTextFieldContainer()}
+            {this.renderSocialButtons()}
+          </View>
+          {this.renderLeftBottomAsset()}
+        </SafeAreaView>
+      );
+    }
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        {this.renderHeader()}
-        {this.renderRightTopAsset()}
-        <View style={styles.contentContainer}>
-          {this.renderLoginTitle()}
-          {this.renderTextFieldContainer()}
-          {this.renderSocialButtons()}
-        </View>
-        {this.renderLeftBottomAsset()}
+        {this.renderScreenControl()}
       </SafeAreaView>
     );
   }

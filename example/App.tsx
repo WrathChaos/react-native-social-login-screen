@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "react-native-social-login-screen";
+import SocialLoginScreen from "./lib/SocialLoginScreen";
 
 const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);
+  const [isSigninButtonSpinner, setIsSigninButtonSpinner] = useState(false);
+
   const [isFacebookSpinner, setIsFacebookSpinner] = useState(false);
   const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
   const [isGoogleSpinner, setIsGoogleSpinner] = useState(false);
@@ -12,16 +14,31 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen
+        onNewEmailChangeText={(newEmail) =>
+          console.log("New email: ", newEmail)
+        }
+        onNewRepasswordChangeText={(newrepassword) =>
+          console.log("New repassword: ", newrepassword)
+        }
+        onNewPasswordChangeText={(newPassword) =>
+          console.log("New password: ", newPassword)
+        }
         onUserNameChangeText={(username) => console.log("Username: ", username)}
         onPasswordChangeText={(password) => console.log("Password: ", password)}
-        onSignUpPress={() => {}}
         onLoginPress={() => {
           setIsLoginButtonSpinner(true);
           setTimeout(() => {
             setIsLoginButtonSpinner(false);
           }, 2000);
         }}
+        onSignupPress={() => {
+          setIsSigninButtonSpinner(true);
+          setTimeout(() => {
+            setIsSigninButtonSpinner(false);
+          }, 2000);
+        }}
         loginButtonSpinnerVisibility={isLoginButtonSpinner}
+        signupButtonSpinnerVisibility={isSigninButtonSpinner}
         onForgotPasswordPress={() => {}}
         rightTopAssetImageSource={require("./assets/ramen.png")}
         leftBottomAssetImageSource={require("./assets/chef.png")}
@@ -69,6 +86,9 @@ const App = () => {
         }}
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
+        }}
+        signupTextStyle={{
+          fontFamily: "Athelas-Bold",
         }}
       />
     </>
