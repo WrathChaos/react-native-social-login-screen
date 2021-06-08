@@ -13,9 +13,9 @@ import {
  * ? Local Imports
  */
 import styles from "./SocialLoginScreen.style";
+import SignUpScreen from "./sign-up/SignUpScreen";
 import TextField from "./components/TextField/TextField";
 import SocialButton from "./components/SocialButton/SocialButton";
-import SignUpScreen from "./signUpScreen/SignUpScreen";
 
 // ? Assets
 const backArrowImage = require("./local-assets/left-arrow.png");
@@ -37,6 +37,7 @@ export interface ISocialLoginProps {
   enableTwitterLogin?: boolean;
   enableGoogleLogin?: boolean;
   enableDiscordLogin?: boolean;
+  disableSignUp?: boolean;
   loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
   forgotPasswordTextStyle?: TextStyle;
@@ -105,24 +106,27 @@ export default class SocialLoginScreen extends React.PureComponent<
   renderHeader = () => {
     const {
       signUpText = "SIGN UP",
+      disableSignUp,
       signUpTextStyle,
       backArrowImageSource = backArrowImage,
     } = this.props;
     return (
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          style={styles.headerContainerGlue}
-          onPress={() => this.setState({ signUpScreenVisibility: true })}
-        >
-          <Image
-            source={backArrowImageSource}
-            style={styles.headerBackImageStyle}
-          />
-          <Text style={[styles.signUpTextStyle, signUpTextStyle]}>
-            {signUpText}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      !disableSignUp && (
+        <View style={styles.headerContainer}>
+          <TouchableOpacity
+            style={styles.headerContainerGlue}
+            onPress={() => this.setState({ signUpScreenVisibility: true })}
+          >
+            <Image
+              source={backArrowImageSource}
+              style={styles.headerBackImageStyle}
+            />
+            <Text style={[styles.signUpTextStyle, signUpTextStyle]}>
+              {signUpText}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )
     );
   };
 

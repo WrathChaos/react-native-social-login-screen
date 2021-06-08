@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "./lib/SocialLoginScreen";
+import SocialLoginScreen from "./build/dist/SocialLoginScreen";
 
 const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);

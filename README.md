@@ -140,15 +140,16 @@ import SocialLoginScreen from "react-native-social-login-screen";
 
 ## Customization
 
-| Property                   | Type  | Default | Description                                                     |
-| -------------------------- | :---: | :-----: | --------------------------------------------------------------- |
-| loginTextStyle             | style | default | change or override the default styling for login text           |
-| signUpTextStyle            | style | default | change or override the default styling for sign-up text         |
-| forgotPasswordTextStyle    | style | default | change or override the default styling for forgot password text |
-| loginButtonShadowColor     | style | default | change the default shadow color for login button                |
-| loginButtonBackgroundColor | style | #69bc4c | change the default background color for login button            |
-| usernameTextFieldStyle     | style | default | change or override the default styling for username TextField   |
-| passwordTextFieldStyle     | style | default | change or override the default styling for password TextField   |
+| Property                   |  Type   | Default | Description                                                     |
+| -------------------------- | :-----: | :-----: | --------------------------------------------------------------- |
+| loginTextStyle             |  style  | default | change or override the default styling for login text           |
+| signUpTextStyle            |  style  | default | change or override the default styling for sign-up text         |
+| forgotPasswordTextStyle    |  style  | default | change or override the default styling for forgot password text |
+| loginButtonShadowColor     |  style  | default | change the default shadow color for login button                |
+| loginButtonBackgroundColor |  style  | #69bc4c | change the default background color for login button            |
+| usernameTextFieldStyle     |  style  | default | change or override the default styling for username TextField   |
+| passwordTextFieldStyle     |  style  | default | change or override the default styling for password TextField   |
+| disableSignUp              | boolean |  false  | disable the signup header if you only want to login screen      |
 
 <i>**More customization is in coming...**</i>
 
@@ -157,7 +158,7 @@ import SocialLoginScreen from "react-native-social-login-screen";
 - [x] ~~LICENSE~~
 - [ ] More Customization Options
 - [ ] Add custom `SocialButton` instead of default ones
-- [ ] Built-in Sign-Up Screen and its navigation with animation
+- [x] ~~Built-in Sign-Up Screen and its navigation with animation~~
 - [ ] Write an article about the lib on Medium
 
 ## Author
