@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import SocialLoginScreen from "./build/dist/SocialLoginScreen";
+import SocialLoginScreen from "./lib/SocialLoginScreen";
 
 const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);
-  const [isSigninButtonSpinner, setIsSigninButtonSpinner] = useState(false);
+  const [loginText, setLoginText] = useState<string>("Let's cook!");
+  const [signUpText, setSignUpText] = useState<string>("Sign up");
 
   const [isFacebookSpinner, setIsFacebookSpinner] = useState(false);
   const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
@@ -14,15 +15,6 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
       <SocialLoginScreen
-        onNewEmailChangeText={(newEmail) =>
-          console.log("New email: ", newEmail)
-        }
-        onNewRepasswordChangeText={(newrepassword) =>
-          console.log("New repassword: ", newrepassword)
-        }
-        onNewPasswordChangeText={(newPassword) =>
-          console.log("New password: ", newPassword)
-        }
         onUserNameChangeText={(username) => console.log("Username: ", username)}
         onPasswordChangeText={(password) => console.log("Password: ", password)}
         onLoginPress={() => {
@@ -31,14 +23,7 @@ const App = () => {
             setIsLoginButtonSpinner(false);
           }, 2000);
         }}
-        onSignupPress={() => {
-          setIsSigninButtonSpinner(true);
-          setTimeout(() => {
-            setIsSigninButtonSpinner(false);
-          }, 2000);
-        }}
         loginButtonSpinnerVisibility={isLoginButtonSpinner}
-        signupButtonSpinnerVisibility={isSigninButtonSpinner}
         onForgotPasswordPress={() => {}}
         rightTopAssetImageSource={require("./assets/ramen.png")}
         leftBottomAssetImageSource={require("./assets/chef.png")}
@@ -87,9 +72,13 @@ const App = () => {
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
         }}
-        signupTextStyle={{
-          fontFamily: "Athelas-Bold",
+        loginText={loginText}
+        signUpText={signUpText}
+        onSignUpPress={(isSignUp: boolean) => {
+          setLoginText(isSignUp ? "Signup" : "Let's cook!");
+          setSignUpText(isSignUp ? "Login" : "Sign up");
         }}
+        onRepasswordChangeText={(text: string) => {}}
       />
     </>
   );

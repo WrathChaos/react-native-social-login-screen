@@ -13,7 +13,7 @@
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-androw": "0.0.34",
-    "react-native-social-login-screen": "^0.1.1",
+    "react-native-social-login-screen": "^0.2.0",
     "react-native-spinkit": "^1.5.1"
   },
   "devDependencies": {
