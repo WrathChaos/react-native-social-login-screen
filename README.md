@@ -113,6 +113,7 @@ import SocialLoginScreen from "react-native-social-login-screen";
 | onLoginPress               |   function   |       undefined        | fundamental onLoginPress functionality for your own logic             |
 | onSignUpPress              |   function   |       undefined        | handle sign-up button is pressed                                      |
 | onForgotPasswordPress      |   function   |       undefined        | handle forgot password button is pressed                              |
+| onRepasswordChangeText     |   function   |       undefined        | handle re-password button is pressed                                  |
 | rightTopAssetImageSource   | image-source |       undefined        | set the right top aligned asset with your own image source            |
 | leftBottomAssetImageSource | image-source |       undefined        | set the left bottom aligned asset with your own image source          |
 | backArrowImageSource       | image-source |        default         | set the sign-up button's back button asset with your own image source |
@@ -158,7 +159,7 @@ import SocialLoginScreen from "react-native-social-login-screen";
 - [x] ~~LICENSE~~
 - [ ] More Customization Options
 - [ ] Add custom `SocialButton` instead of default ones
-- [x] ~~Built-in Sign-Up Screen and its navigation with animation~~
+- [x] ~~Built-in Sign-Up Logic is Integrated~~
 - [ ] Write an article about the lib on Medium
 
 ## Author

@@ -6,6 +6,7 @@ const App = () => {
   const [isLoginButtonSpinner, setIsLoginButtonSpinner] = useState(false);
   const [loginText, setLoginText] = useState<string>("Let's cook!");
   const [signUpText, setSignUpText] = useState<string>("Sign up");
+  const [loginTitleText, setLoginTitleText] = useState<string>("Login");
 
   const [isFacebookSpinner, setIsFacebookSpinner] = useState(false);
   const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
@@ -72,11 +73,13 @@ const App = () => {
         forgotPasswordTextStyle={{
           fontFamily: "Sansita-Bold",
         }}
+        loginTitleText={loginTitleText}
         loginText={loginText}
         signUpText={signUpText}
         onSignUpPress={(isSignUp: boolean) => {
           setLoginText(isSignUp ? "Signup" : "Let's cook!");
           setSignUpText(isSignUp ? "Login" : "Sign up");
+          setLoginTitleText(isSignUp ? "Sign up" : "Log In");
         }}
         onRepasswordChangeText={(text: string) => {}}
       />
