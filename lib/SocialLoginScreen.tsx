@@ -164,11 +164,8 @@ export default class SocialLoginScreen extends React.PureComponent<
 
   renderRepasswordContainer = () => {
     const {
-      usernameTextFieldStyle,
-      usernamePlaceholder = "john_doe@example.com",
-      onUserNameChangeText,
       passwordPlaceholder = "• • • • • • • •",
-      onPasswordChangeText,
+      onRepasswordChangeText,
       passwordTextFieldStyle,
     } = this.props;
     return (
@@ -179,7 +176,7 @@ export default class SocialLoginScreen extends React.PureComponent<
           {...this.props}
           placeholder={passwordPlaceholder}
           textFieldStyle={passwordTextFieldStyle}
-          onChangeText={onPasswordChangeText}
+          onChangeText={onRepasswordChangeText}
         />
       </View>
     );
