@@ -22,6 +22,7 @@ interface Style {
   forgotPasswordTextStyle: TextStyle;
   socialLoginButtonContainer: ViewStyle;
   facebookImageStyle: ImageStyle;
+  appleImageStyle: ImageStyle;
   socialLoginButtonImageStyle: ImageStyle;
   socialButtonsContainer: ViewStyle;
   socialButtonsContainerGlue: ViewStyle;
@@ -82,6 +83,11 @@ export default StyleSheet.create<Style>({
   facebookImageStyle: {
     width: 25,
     height: 25,
+  },
+  appleImageStyle: {
+    width: 25,
+    height: 25,
+    left: 3,
   },
   socialLoginButtonImageStyle: {
     left: 3,

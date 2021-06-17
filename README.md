@@ -124,20 +124,24 @@ import SocialLoginScreen from "react-native-social-login-screen";
 
 ## Social Buttons
 
-| Property             |   Type   |      Default       | Description                              |
-| -------------------- | :------: | :----------------: | ---------------------------------------- |
-| loginText            |  string  |   "Let's cook!"    | change the login button's text           |
-| signUpText           |  string  |     "Sign Up"      | change the sign up button's text         |
-| loginTitleText       |  string  |      "Log In"      | change the login title's text            |
-| forgotPasswordText   |  string  | "Forgot Password?" | change the forgot password button's text |
-| enableFacebookLogin  | boolean  |       false        | enable the Facebook login button         |
-| enableTwitterLogin   | boolean  |       false        | enable the Twitter login button          |
-| enableGoogleLogin    | boolean  |       false        | enable the Google login button           |
-| enableDiscordLogin   | boolean  |       false        | enable the Discord login button          |
-| onFacebookLoginPress | function |     undefined      | handle Facebook login button is pressed  |
-| onTwitterLoginPress  | function |     undefined      | handle Twitter login button is pressed   |
-| onGoogleLoginPress   | function |     undefined      | handle Google login button is pressed    |
-| onDiscordLoginPress  | function |     undefined      | handle Discord login button is pressed   |
+| Property               |   Type   |      Default       | Description                                    |
+| ---------------------- | :------: | :----------------: | ---------------------------------------------- |
+| loginText              |  string  |   "Let's cook!"    | change the login button's text                 |
+| signUpText             |  string  |     "Sign Up"      | change the sign up button's text               |
+| loginTitleText         |  string  |      "Log In"      | change the login title's text                  |
+| forgotPasswordText     |  string  | "Forgot Password?" | change the forgot password button's text       |
+| enableFacebookLogin    | boolean  |       false        | enable the Facebook login button               |
+| enableTwitterLogin     | boolean  |       false        | enable the Twitter login button                |
+| enableGoogleLogin      | boolean  |       false        | enable the Google login button                 |
+| enableDiscordLogin     | boolean  |       false        | enable the Discord login button                |
+| enableAppleLogin       | boolean  |       false        | enable the Apple login button                  |
+| onFacebookLoginPress   | function |     undefined      | handle Facebook login button is pressed        |
+| onTwitterLoginPress    | function |     undefined      | handle Twitter login button is pressed         |
+| onGoogleLoginPress     | function |     undefined      | handle Google login button is pressed          |
+| onDiscordLoginPress    | function |     undefined      | handle Discord login button is pressed         |
+| onAppleLoginPress      | function |     undefined      | handle Apple login button is pressed           |
+| appleSpinnerColor      |  color   |        #fff        | handle Apple login button's spinner color      |
+| appleSpinnerVisibility | boolean  |       false        | handle Apple login button's spinner visibility |
 
 ## Customization
 
@@ -150,7 +154,8 @@ import SocialLoginScreen from "react-native-social-login-screen";
 | loginButtonBackgroundColor |  style  | #69bc4c | change the default background color for login button            |
 | usernameTextFieldStyle     |  style  | default | change or override the default styling for username TextField   |
 | passwordTextFieldStyle     |  style  | default | change or override the default styling for password TextField   |
-| disableSignUp              | boolean |  false  | disable the signup header if you only want to login screen      |
+| disableSignUp              | boolean |  false  | disable the sign up header if you only want to login screen     |
+| disableForgotButton        | boolean |  false  | disable the forgot button                                       |
 
 <i>**More customization is in coming...**</i>
 

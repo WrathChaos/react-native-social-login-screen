@@ -22,6 +22,7 @@ const facebookLogo = require("./local-assets/facebook-logo.png");
 const twitterLogo = require("./local-assets/twitter-logo.png");
 const googleLogo = require("./local-assets/google-logo.png");
 const discordLogo = require("./local-assets/discord-logo.png");
+const appleLogo = require("./local-assets/apple-logo.png");
 
 export interface ISocialLoginProps {
   loginText?: string;
@@ -32,6 +33,7 @@ export interface ISocialLoginProps {
   loginButtonBackgroundColor?: string;
   usernamePlaceholder?: string;
   passwordPlaceholder?: string;
+  enableAppleLogin?: boolean;
   enableFacebookLogin?: boolean;
   enableTwitterLogin?: boolean;
   enableGoogleLogin?: boolean;
@@ -55,10 +57,14 @@ export interface ISocialLoginProps {
   googleSpinnerColor?: string;
   discordSpinnerColor?: string;
   disableSignUp?: boolean;
+  appleSpinnerColor?: string;
+  appleSpinnerVisibility?: boolean;
+  disableForgotButton?: boolean;
   loginTextStyle?: TextStyle;
   signUpTextStyle?: TextStyle;
   forgotPasswordTextStyle?: TextStyle;
   onLoginPress: () => void;
+  onAppleLoginPress?: () => void;
   onForgotPasswordPress: () => void;
   onFacebookLoginPress?: () => void;
   onTwitterLoginPress?: () => void;
@@ -187,16 +193,21 @@ export default class SocialLoginScreen extends React.PureComponent<
       forgotPasswordText = "Forgot Password?",
       forgotPasswordTextStyle,
       onForgotPasswordPress,
+      disableForgotButton,
     } = this.props;
     return (
-      <TouchableOpacity
-        style={styles.forgotPasswordContainer}
-        onPress={onForgotPasswordPress}
-      >
-        <Text style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
-          {forgotPasswordText}
-        </Text>
-      </TouchableOpacity>
+      !disableForgotButton && (
+        <TouchableOpacity
+          style={styles.forgotPasswordContainer}
+          onPress={onForgotPasswordPress}
+        >
+          <Text
+            style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}
+          >
+            {forgotPasswordText}
+          </Text>
+        </TouchableOpacity>
+      )
     );
   };
 
@@ -254,6 +265,34 @@ export default class SocialLoginScreen extends React.PureComponent<
     );
   };
 
+  renderAppleLoginButton = () => {
+    const {
+      spinnerSize,
+      spinnerType,
+      appleSpinnerColor,
+      onAppleLoginPress,
+      appleSpinnerVisibility,
+    } = this.props;
+    return (
+      <View style={styles.socialLoginButtonContainer}>
+        <SocialButton
+          width={60}
+          height={60}
+          shadowColor="#1c1c1c"
+          backgroundColor="#1c1c1c"
+          isSpinner={appleSpinnerVisibility}
+          spinnerSize={spinnerSize}
+          spinnerType={spinnerType}
+          spinnerColor={appleSpinnerColor}
+          component={
+            <Image source={appleLogo} style={styles.appleImageStyle} />
+          }
+          onPress={() => onAppleLoginPress && onAppleLoginPress()}
+        />
+      </View>
+    );
+  };
+
   renderTwitterLoginButton = () => {
     const {
       onTwitterLoginPress,
@@ -299,10 +338,10 @@ export default class SocialLoginScreen extends React.PureComponent<
           width={60}
           height={60}
           backgroundColor="#fff"
-          isSpinner={googleSpinnerVisibility}
           spinnerSize={spinnerSize}
           spinnerType={spinnerType}
           spinnerColor={googleSpinnerColor}
+          isSpinner={googleSpinnerVisibility}
           component={
             <Image
               source={googleLogo}
@@ -317,11 +356,11 @@ export default class SocialLoginScreen extends React.PureComponent<
 
   renderDiscordLoginButton = () => {
     const {
-      onDiscordLoginPress,
-      discordSpinnerVisibility,
       spinnerSize,
       spinnerType,
       discordSpinnerColor,
+      onDiscordLoginPress,
+      discordSpinnerVisibility,
     } = this.props;
     return (
       <View style={styles.socialLoginButtonContainer}>
@@ -352,6 +391,7 @@ export default class SocialLoginScreen extends React.PureComponent<
       enableTwitterLogin,
       enableGoogleLogin,
       enableDiscordLogin,
+      enableAppleLogin,
     } = this.props;
     return (
       <View style={styles.socialButtonsContainer}>
@@ -362,6 +402,7 @@ export default class SocialLoginScreen extends React.PureComponent<
         >
           {enableFacebookLogin && this.renderFacebookLoginButton()}
           {enableTwitterLogin && this.renderTwitterLoginButton()}
+          {enableAppleLogin && this.renderAppleLoginButton()}
           {enableGoogleLogin && this.renderGoogleLoginButton()}
           {enableDiscordLogin && this.renderDiscordLoginButton()}
         </ScrollView>
@@ -397,7 +438,7 @@ export default class SocialLoginScreen extends React.PureComponent<
 
   renderContent = () => {
     return (
-      <SafeAreaView style={styles.container}>
+      <View>
         {this.renderHeader()}
         {this.renderRightTopAsset()}
         <View style={styles.contentContainer}>
@@ -406,7 +447,7 @@ export default class SocialLoginScreen extends React.PureComponent<
           {this.renderSocialButtons()}
         </View>
         {this.renderLeftBottomAsset()}
-      </SafeAreaView>
+      </View>
     );
   };
 

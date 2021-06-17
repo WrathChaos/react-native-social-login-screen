@@ -12,6 +12,7 @@ const App = () => {
   const [isDiscordSpinner, setIsDiscordSpinner] = useState(false);
   const [isGoogleSpinner, setIsGoogleSpinner] = useState(false);
   const [isTwitterSpinner, setIsTwitterSpinner] = useState(false);
+  const [isAppleSpinner, setIsAppleSpinner] = useState(false);
   return (
     <>
       <StatusBar barStyle="dark-content" translucent hidden />
@@ -59,6 +60,14 @@ const App = () => {
           setIsGoogleSpinner(true);
           setTimeout(() => {
             setIsGoogleSpinner(false);
+          }, 2000);
+        }}
+        enableAppleLogin
+        appleSpinnerVisibility={isAppleSpinner}
+        onAppleLoginPress={() => {
+          setIsAppleSpinner(true);
+          setTimeout(() => {
+            setIsAppleSpinner(false);
           }, 2000);
         }}
         loginButtonTextStyle={{
